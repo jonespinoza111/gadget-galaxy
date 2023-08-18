@@ -65,6 +65,7 @@
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
             @if(Session::has('user'))
             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account Settings</a>
+            <a href="/myorders" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">My Orders</a>
             <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Logout</a>
             {{-- <form method="POST" action="#" role="none">
               <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Logout</button>

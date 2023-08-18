@@ -2,7 +2,7 @@
 @section('content')
 <div class="custom-product">
     <div>
-        <div>
+        <div class="mx-10 my-5">
             <h4>Result for Products</h4>
             <div class="flex flex-col gap-y-4 m-5">
             @foreach($products as $item)
@@ -24,6 +24,7 @@
                 </div>
                 @endforeach
             </div>
+            <a href="ordernow" class="w-auto bg-green-200 p-3">Order Now</a>
         </div>
     </div>
 </div>
