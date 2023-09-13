@@ -8,14 +8,14 @@
 <!-- navbar -->
 <nav class="flex justify-between bg-gray-900 text-white w-screen">
 <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-    <a class="text-3xl font-bold font-heading" href="#">
+    <a class="text-3xl font-bold font-heading" href="/">
     <!-- <img class="h-9" src="logo.png" alt="logo"> -->
     Logo Here.
     </a>
     <!-- Nav Links -->
     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-    <li><a class="hover:text-gray-200" href="#">Home</a></li>
-    <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
+    <li><a class="hover:text-gray-200" href="/">Home</a></li>
+    <li><a class="hover:text-gray-200" href="/admin">Catagory</a></li>
     <li><a class="hover:text-gray-200" href="#">Collections</a></li>
     <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
     </ul>
@@ -63,15 +63,20 @@
         <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
           <div class="py-1" role="none">
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+
             @if(Session::has('user'))
+              @if(Session::get('user')['role_as'] == "1")
+              <a href="/admin" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Dashboard</a>
+              @endif
             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account Settings</a>
             <a href="/myorders" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">My Orders</a>
-            <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Logout</a>
+            <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Logout</a>            
             {{-- <form method="POST" action="#" role="none">
               <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Logout</button>
             </form> --}}
             @else
             <a href="/login" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Login</a>
+            <a href="/register" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Register</a>
             @endif
           </div>
         </div>

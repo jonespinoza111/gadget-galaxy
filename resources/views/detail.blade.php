@@ -1,22 +1,58 @@
 @extends('main')
 @section("content")
-<div class="container">
-    <div class="flex flex-row gap-x-5">
-        <div class="">
-            <img src="data:image/jpeg;base64,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" />
+<div class="container py-[2em] px-[2em] md:[4em] xl:px-[10em] flex flex-col md:flex-row m-0 w-screen bg-[#EFF2F6]">
+    <div class="left-side w-[100%] md:w-[60%] md:mx-4 my-4 md:my-0  flex flex-col items-center bg-[#EFF2F6]">
+        <div class="image-container w-[100%] flex justify-center items-center">
+            {{-- <img src={{$product['gallery']}} class="w-[30em] h-[25em]" /> --}}
+            @include('carousel')
         </div>
-        <div class="flex flex-col gap-y-2">
-            <h2>{{$product['name']}}</h2>
-            <h3>Price: {{$product['price']}}</h3>
-            <h4>Details: {{$product['description']}}</h4>
-            <h4>Category: {{$product['category']}}</h4>
-            <a href="/">Go Back</a>
-            <form action="/add_to_cart" method="POST">
-                @csrf
-                <input type="hidden" name="product_id" value={{$product['id']}}>
-                <button class="bg-blue-200 w-[100px] p-2">Add to Cart</button>
-            </form>
-            <button class="bg-green-200 w-[100px] p-2">Buy Now</button>
+        {{-- <div class="image-slider flex justify-center items-center w-[100%] h-[10em] bg-white">Images</div> --}}
+    </div>
+    <div class="right-side w-[100%] md:w-[40%] flex flex-col bg-[#EFF2F6] gap-y-5">
+        <div class="product-specs-container flex flex-col gap-y-2 w-[100%] bg-white px-[1.5em] py-[1em] rounded">
+            <div class="product-name text-[18px] font-semibold">{{$product['name']}}</div>
+            <div class="product-price text-[20px] font-bold">${{$product['price']}}</div>
+            <div class="product-description text-[14px] font-light">{{$product['description']}}</div>
+            <div class="color-options-container">
+                <h3 class="font-light text-[14px]">Color: Red</h3>
+                <div class="color-options flex flex-row gap-x-2 mt-1">
+                    <div class="color-circle w-[2em] h-[2em] bg-red-200 rounded-full cursor-pointer border-black border-2"></div>
+                    <div class="color-circle w-[2em] h-[2em] bg-blue-200 rounded-full cursor-pointer"></div>
+                    <div class="color-circle w-[2em] h-[2em] bg-gray-200 rounded-full cursor-pointer"></div>
+                    <div class="color-circle w-[2em] h-[2em] bg-yellow-200 rounded-full cursor-pointer"></div>
+                    <div class="color-circle w-[2em] h-[2em] bg-green-200 rounded-full cursor-pointer"></div>
+                </div>
+            </div>
+            <div class="button-container flex flex-col gap-y-3 my-2">
+                <button class="add-to-cart-button bg-black text-white w-[100%] py-3">Add to Cart</button>
+                <button class="save-for-later-button bg-white border-2 border-black w-[100%] py-3">Buy Now</button>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="details-container bg-white px-[1.5em] py-[1em] rounded">
+            <div class="tabs flex flex-row justify-between items-center">
+                <div>
+                    <span class="uppercase text-[16px] font-semibold underline underline-offset-8">Description</span>
+                </div>
+                <div>
+                    <span class="uppercase text-[16px] font-medium">Details</span>
+                </div>
+                <div>
+                    <span class="uppercase text-[16px] font-medium">Specs</span>
+                </div>
+            </div>
+            <div class="tab-content my-4">
+                <p class="text-[14px] font-light">Introducing the latest Samsung Phone, a cutting-edge device that combines sleek design with powerful performance. Packed with innovative features and advanced technology, this phone is designed to enhance your mobile experience like never before.</p>
+                <ul class="list-disc mt-4 text-[14px] font-light mx-5">
+                    <li> Immerse yourself in vibrant visuals with the Samsung Phone's stunning display</li>
+                    <li>Experience lightning-fast performance and seamless multitasking </li>
+                    <li>Capture every moment in stunning detail with the Samsung Phone's high-resolution camera</li>
+                    <li>Protect your personal data with advanced security features</li>
+                    <li>Stay connected all day long with the Samsung Phone's long-lasting battery life</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

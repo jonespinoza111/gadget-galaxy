@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,19 @@ class UserController extends Controller
             return $user;
         } else {
             $req->session()->put('user',$user);
-            return redirect('/');
+            if ($user->role_as == "1") {
+                return redirect('/admin')->with('status', 'Welcome to the Dashboard');
+            } else {
+                return redirect('/')->with('status', 'Logged in successfully');
+            }
         }
+    }
+    function register(Request $req) {
+        $user = new User;
+        $user->name=$req->username;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->save();
+        return redirect('/login');
     }
 }

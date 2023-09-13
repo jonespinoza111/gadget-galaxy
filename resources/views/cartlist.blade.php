@@ -9,7 +9,7 @@
                 <div class="flex flex-row items-center gap-x-3 border-[#ccc] border-b-2 pb-6">
                     <div class="searched-item">
                         <a href="detail/{{$item->id}}">
-                            <img class="product-image" src="{{$item->gallery}}" />
+                            <img class="product-image w-[10em] h-[8em]" src="{{$item->gallery}}" />
                         </a>
                     </div>
                     <div class="searched-item">

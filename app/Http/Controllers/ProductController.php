@@ -84,5 +84,8 @@ class ProductController extends Controller
         ->get();
         return view('myorders',['orders'=>$orders]);
     }
+    function admin() {
+        return view('admin');
+    }
 }
 
