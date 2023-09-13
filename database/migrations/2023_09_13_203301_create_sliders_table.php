@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colors', function (Blueprint $table) {
+        Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code');
-            $table->tinyInteger('status')->default('0');
+            $table->string('title');
+            $table->mediumText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->default('0')->comment('1=hidden,0=visible');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('sliders');
     }
 };

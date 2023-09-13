@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ShopProductController;
+use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,7 @@ use App\Http\Controllers\Admin\ShopProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 
 Route::get('/login', function () {
@@ -33,6 +37,7 @@ Route::view('/register','register');
 Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'index']);
+Route::get('/home', [FrontendController::class,'index']);
 Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::post('add_to_cart',[ProductController::class,'addToCart']);
 Route::get('cartlist',[ProductController::class,'cartList']);
@@ -64,6 +69,28 @@ Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
         Route::put('/products/{product}','update');
         Route::get('/products/{product_id}/delete','destroy');
         Route::get('/product-image/{product_image_id}/delete','destroyImage');
+
+        Route::post('/product-color/{product_color_id}','updateProductColorQuantity');
+        Route::get('/product-color/{product_color_id}/delete','deleteProductColor');
+
+    });
+
+    Route::controller(ColorController::class)->group(function () {
+        Route::get('/colors','index');
+        Route::get('/colors/create','create');
+        Route::post('/colors/create','store');
+        Route::get('/colors/{color}/edit','edit');
+        Route::put('/colors/{color_id}','update');
+        Route::get('/colors/{color_id}/delete','destroy');
+    });
+
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('/sliders','index');
+        Route::get('/sliders/create','create');
+        Route::post('/sliders/create','store');
+        Route::get('/sliders/{slider}/edit','edit');
+        Route::put('/sliders/{slider}','update');
+        Route::get('/sliders/{slider}/delete','destroy');
     });
 });
 

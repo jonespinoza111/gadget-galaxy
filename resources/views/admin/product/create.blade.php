@@ -29,6 +29,9 @@
                                 <li role="presentation">
                                     <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="images-tab" data-tabs-target="#images" type="button" role="tab" aria-controls="images" aria-selected="false">Product Images</button>
                                 </li>
+                                <li role="presentation">
+                                    <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="color-tab" data-tabs-target="#color" type="button" role="tab" aria-controls="color" aria-selected="false">Product Color</button>
+                                </li>
                             </ul>
                         </div>
                         <div id="myTabContent">
@@ -118,6 +121,30 @@
                                 <div>
                                     <label>Upload Product Images</label>
                                     <input type="file" name="image[]" multiple />
+                                </div>
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="color" role="tabpanel" aria-labelledby="color-tab">
+                                <div>
+                                    <label>Select Color</label>
+                                    <div class="flex flex-row gap-x-3 gap-y-3 flex-wrap">
+                                        @forelse ($colors as $colorItem)
+                                            <div class="border-2 border-gray-300 px-4 py-2">
+                                                <div class="flex flex-col">
+                                                    <span>
+                                                        Color: <input type="checkbox" name="colors[{{$colorItem->id}}]" value="{{$colorItem->id}}" /> {{$colorItem->name}}
+                                                    </span>
+                                                    <span>
+                                                        Quantity: <input type="number"
+                                                        min="0" name="colorquantity[{{$colorItem->id}}]" class="w-[70px]"  />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <div>
+                                                <h2>No colors found</h2>
+                                            </div>
+                                        @endforelse
+                                    </div>
                                 </div>
                             </div>
                         </div>
