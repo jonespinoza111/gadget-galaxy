@@ -41,7 +41,8 @@
         <span class="flex absolute -mt-5 ml-4">
             <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
             <span class="relative flex justify-center items-center rounded-full h-3 w-3 bg-pink-500">
-            {{$total}}</span>
+                <livewire:frontend.cart.cart-count />
+            </span>
         </span>
     </a>
     <div class="relative inline-block text-left">
@@ -78,6 +79,7 @@
               @endif
             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account Settings</a>
             <a href="/myorders" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">My Orders</a>
+            <a href="/wishlist" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Wishlist</a>
             <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Logout</a>            
             {{-- <form method="POST" action="#" role="none">
               <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Logout</button>
@@ -98,12 +100,14 @@
     
     </div>
 </div>
-<div class="w-full bg-slate-400 py-4">
+<div class="w-full bg-slate-400 py-2 px-5">
     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-        <li><a class="hover:text-gray-200" href="/">Home</a></li>
-        <li><a class="hover:text-gray-200" href="/admin">Catagory</a></li>
-        <li><a class="hover:text-gray-200" href="#">All</a></li>
-        <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
+        <li><a class="hover:text-gray-200" href="{{ url('/home') }}">Home</a></li>
+        <li><a class="hover:text-gray-200" href="{{ url('/collections') }}">All Categories</a></li>
+        <li><a class="hover:text-gray-200" href="{{ url('/new-arrivals') }}">New Arrivals</a></li>
+        <li><a class="hover:text-gray-200" href="#">Featured Products</a></li>
+        <li><a class="hover:text-gray-200" href="#">Electronics</a></li>
+        <li><a class="hover:text-gray-200" href="#">Accessories</a></li>
     </ul> 
 </div>
 <!-- Responsive navbar -->

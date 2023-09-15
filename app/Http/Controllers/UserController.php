@@ -17,12 +17,21 @@ class UserController extends Controller
         if (!$user || !Hash::check($req->password,$user->password)) {
             return $user;
         } else {
+            $userdata = array(
+                'email' => $req->email ,
+                'password' => $req->password ,
+            );
             $req->session()->put('user',$user);
-            if ($user->role_as == "1") {
-                return redirect('/admin')->with('status', 'Welcome to the Dashboard');
-            } else {
-                return redirect('/')->with('status', 'Logged in successfully');
-            }
+            // if (Auth::attempt($userdata)) {
+                if ($user->role_as == "1") {
+                    return redirect('/admin')->with('status', 'Welcome to the Dashboard');
+                } else {
+                    return redirect('/')->with('status', 'Logged in successfully');
+                }
+            // } else {
+                return redirect('/login')->with('status', 'Could not login');
+            // }
+
         }
     }
     function register(Request $req) {

@@ -16,6 +16,7 @@
                             <tr>
                                 <th class="w-[200px] text-start">ID</th>
                                 <th class="w-[200px] text-start">Name</th>
+                                <th class="w-[200px] text-start">Category</th>
                                 <th class="w-[200px] text-start">Slug</th>
                                 <th class="w-[200px] text-start">Status</th>
                                 <th class="w-[200px] text-start">Action</th>
@@ -26,6 +27,14 @@
                                 <tr class="">
                                     <td>{{$brand->id}}</td>
                                     <td>{{$brand->name}}</td>
+                                    <td>
+                                        @if ($brand->category)
+                                            {{$brand->category->name}}
+                                            
+                                        @else
+                                            No Category
+                                        @endif
+                                    </td>
                                     <td>{{$brand->slug}}</td>
                                     <td>{{$brand->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>

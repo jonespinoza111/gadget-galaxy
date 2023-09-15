@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ShopProductController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'index']);
 Route::get('/home', [FrontendController::class,'index']);
+Route::get('/collections', [FrontendController::class,'categories']);
+Route::get('/collections/{category_slug}', [FrontendController::class,'products']);
+Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class,'productView']);
+Route::get('/wishlist', [WishlistController::class,'index']);
 Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::post('add_to_cart',[ProductController::class,'addToCart']);
 Route::get('cartlist',[ProductController::class,'cartList']);

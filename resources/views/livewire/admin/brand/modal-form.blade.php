@@ -11,6 +11,15 @@
                 <div class="p-6 text-center">
                     <div class="flex flex-col gap-y-5 py-3">
                         <div class="flex flex-col items-start flex-1">
+                            <label>Select Category</label>
+                            <select wire:model.defer="category_id" required>
+                                <option value="">---Select Category---</option>
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="flex flex-col items-start flex-1">
                             <label>Brand Name</label>
                             <input type="text" class="w-[100%]" wire:model.defer="name" />
                         </div>
@@ -46,6 +55,15 @@
             <form  wire:submit.prevent="updateBrand">
                 <div class="p-6 text-center">
                     <div class="flex flex-col gap-y-5 py-3">
+                        <div class="flex flex-col items-start flex-1">
+                            <label>Select Category</label>
+                            <select wire:model.defer="category_id" required>
+                                <option value="">---Select Category---</option>
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="flex flex-col items-start flex-1">
                             <label>Brand Name</label>
                             <input type="text" class="w-[100%]" wire:model.defer="name" />
