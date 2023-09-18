@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +46,13 @@ Route::get('/collections', [FrontendController::class,'categories']);
 Route::get('/collections/{category_slug}', [FrontendController::class,'products']);
 Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class,'productView']);
 Route::get('/wishlist', [WishlistController::class,'index']);
+Route::get('/cart', [CartController::class,'index']);
+Route::get('/checkout', [CheckoutController::class,'index']);
+Route::get('/thank-you', [FrontendController::class,'thankyou']);
+Route::get('/orders', [OrderController::class,'index']);
+Route::get('/orders/{orderId}', [OrderController::class,'show']);
+
+
 Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::post('add_to_cart',[ProductController::class,'addToCart']);
 Route::get('cartlist',[ProductController::class,'cartList']);
@@ -96,6 +106,12 @@ Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
         Route::get('/sliders/{slider}/edit','edit');
         Route::put('/sliders/{slider}','update');
         Route::get('/sliders/{slider}/delete','destroy');
+    });
+
+    Route::controller(\App\Http\Controllers\Admin\OrderController::class)->group(function () {
+        Route::get('/orders','index');
+        Route::get('/orders/{orderId}','show');
+        Route::put('/orders/{orderId}','updateOrderStatus');
     });
 });
 

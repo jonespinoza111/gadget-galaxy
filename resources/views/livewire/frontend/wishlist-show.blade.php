@@ -49,11 +49,4 @@
             </tbody>
         </table>
     </div>
-    <h3>
-        @forelse ($wishlist as $wishlistItem)
-            <span>Wishlist here</span>
-        @empty
-            <span>No wishlists</span>
-        @endforelse
-    </h3>
 </div>

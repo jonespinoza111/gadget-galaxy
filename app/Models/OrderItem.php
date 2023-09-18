@@ -2,23 +2,26 @@
 
 namespace App\Models;
 
-use App\Models\ProductColor;
-use App\Models\ShopProduct;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\ShopProduct;
+use App\Models\ProductColor;
 
-class Cart extends Model
+class OrderItem extends Model
 {
     use HasFactory;
-    protected $table = "carts";
+
+    protected $table = 'order_items';
 
     protected $fillable = [
-        'user_id',
+        'order_id',
         'product_id',
         'product_color_id',
-        'quantity'
+        'quantity',
+        'price'
     ];
+
 
     public function product(): BelongsTo {
         return $this->belongsTo(ShopProduct::class, 'product_id', 'id');
