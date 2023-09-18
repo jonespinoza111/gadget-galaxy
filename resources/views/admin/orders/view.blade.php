@@ -9,6 +9,8 @@
             <div class="flex flex-row w-full">
                 <h3>Order Details</h3>
                 <a href="{{ url('admin/orders') }}" class="w-[200px] bg-blue-200 px-4 py-2">Back</a>
+                <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="w-[200px] bg-green-200 px-4 py-2">Download Invoice</a>
+                <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="w-[200px] bg-blue-200 px-4 py-2">View Invoice</a>
             </div>
             <div class="flex flex-col gap-x-6 gap-y-6">
                 <div class="flex flex-row">
