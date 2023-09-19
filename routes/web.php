@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -61,6 +62,14 @@ Route::get('ordernow',[ProductController::class,'orderNow']);
 Route::post('placeorder',[ProductController::class,'placeOrder']);
 Route::get('myorders',[ProductController::class,'myOrders']);
 
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/home', 'index');
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}', 'products');
+    Route::get('/collections/{category_slug}/{product_slug}', 'productView');
+    Route::get('/new-arrivals', 'newArrival');
+});
+
 Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
     Route::get('/',[DashboardController::class,'index']);
 
@@ -116,6 +125,13 @@ Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
         Route::get('/invoice/{orderId}','viewInvoice');
         Route::get('/invoice/{orderId}/generate','generateInvoice');
     });
+
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/settings','index');
+        Route::post('/settings','store');
+    });
+
+
 });
 
 

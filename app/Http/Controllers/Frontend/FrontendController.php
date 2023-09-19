@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\ShopProduct;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,8 @@ class FrontendController extends Controller
 {
     public function index() {
         $sliders = Slider::where('status','0')->get();
-        return view('frontend.index', compact('sliders'));
+        $trendingProducts = ShopProduct::where('trending', '1')->latest()->take(15)->get();
+        return view('frontend.index', compact('sliders', 'trendingProducts'));
     }
 
     public function categories() {
@@ -46,5 +48,10 @@ class FrontendController extends Controller
 
     public function thankyou() {
         return view('frontend.thank-you');
+    }
+
+    public function newArrival() {
+        $newArrivalProducts = ShopProduct::latest()->take(3)->get();
+        return view('frontend.pages.new-arrival', compact('newArrivalProducts'));
     }
 }

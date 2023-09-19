@@ -10,7 +10,7 @@
 <div class="px-5 xl:px-12 py-6 flex w-full items-center justify-between">
     <a class="text-3xl font-bold font-heading" href="/">
     <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-    Logo Here.
+    {{$appSettings->website_name ?? 'website name'}}
     </a>
     <!-- Nav Links -->
     
