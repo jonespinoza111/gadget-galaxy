@@ -13,7 +13,8 @@ class FrontendController extends Controller
     public function index() {
         $sliders = Slider::where('status','0')->get();
         $trendingProducts = ShopProduct::where('trending', '1')->latest()->take(15)->get();
-        return view('frontend.index', compact('sliders', 'trendingProducts'));
+        $newArrivalProducts = ShopProduct::latest()->take(3)->get();
+        return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalProducts'));
     }
 
     public function categories() {
