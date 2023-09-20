@@ -131,7 +131,17 @@ Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
         Route::post('/settings','store');
     });
 
+    Route::controller(\App\Http\Controllers\Admin\UserController::class)->group(function () {
+        Route::get('/users','index');
+        Route::get('/users/create','create');
+        Route::post('/users','store');
+        Route::get('/users/{userId}/edit','edit');
+        Route::put('/users/{userId}','update');
+        Route::get('/users/{userId}/delete','destroy');
+    });
 
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    
 });
 
 
