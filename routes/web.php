@@ -42,16 +42,20 @@ Route::view('/register','register');
 Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'index']);
-Route::get('/home', [FrontendController::class,'index']);
-Route::get('/collections', [FrontendController::class,'categories']);
-Route::get('/collections/{category_slug}', [FrontendController::class,'products']);
-Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class,'productView']);
+// Route::get('/home', [FrontendController::class,'index']);
+// Route::get('/collections', [FrontendController::class,'categories']);
+// Route::get('/collections/{category_slug}', [FrontendController::class,'products']);
+// Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class,'productView']);
 Route::get('/wishlist', [WishlistController::class,'index']);
 Route::get('/cart', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/thank-you', [FrontendController::class,'thankyou']);
 Route::get('/orders', [OrderController::class,'index']);
 Route::get('/orders/{orderId}', [OrderController::class,'show']);
+Route::get('profile', [UserController::class, 'index']);
+Route::post('profile', [UserController::class, 'updateUserDetails']);
+Route::get('change-password', [UserController::class, 'passwordCreate']);
+Route::post('change-password', [UserController::class, 'changePassword']);
 
 
 Route::get('detail/{id}',[ProductController::class,'detail']);
@@ -68,6 +72,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
     Route::get('/new-arrivals', 'newArrival');
+
+    Route::get('search', 'searchProducts');
 });
 
 Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
@@ -124,6 +130,8 @@ Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
 
         Route::get('/invoice/{orderId}','viewInvoice');
         Route::get('/invoice/{orderId}/generate','generateInvoice');
+        Route::get('/invoice/{orderId}/mail','mailInvoice');
+
     });
 
     Route::controller(SettingController::class)->group(function () {

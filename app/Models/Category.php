@@ -28,6 +28,10 @@ class Category extends Model
         return $this->hasMany(ShopProduct::class, 'category_id', 'id');
     }
 
+    public function relatedProducts() {
+        return $this->hasMany(ShopProduct::class, 'category_id', 'id')->latest();
+    }
+
     public function brands() {
         return $this->hasMany(Brand::class, 'category_id', 'id')->where('status','0');
     }

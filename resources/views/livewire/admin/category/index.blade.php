@@ -30,7 +30,7 @@
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
+                <div class="card-header flex flex-row justify-between items-center">
                     <h4 class="text-[20px]">Category</h4>
                     <a href="{{ url('admin/category/create') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Add Category</a>
                 </div>

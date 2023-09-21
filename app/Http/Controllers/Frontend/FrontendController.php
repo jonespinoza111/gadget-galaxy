@@ -55,4 +55,14 @@ class FrontendController extends Controller
         $newArrivalProducts = ShopProduct::latest()->take(3)->get();
         return view('frontend.pages.new-arrival', compact('newArrivalProducts'));
     }
+
+    public function searchProducts(Request $request) {
+        if ($request->search) {
+            $searchProducts = ShopProduct::where('name','LIKE','%'.$request->search.'%')->latest()->paginate(5);
+            return view('frontend.pages.search', compact('searchProducts'));
+        } else {
+            return redirect()->back()->with('message', 'Empty Search');
+        }
+    }
+    
 }
