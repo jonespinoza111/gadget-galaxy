@@ -24,7 +24,7 @@
         </div>
     </div>
     
-    <div class="w-full flex flex-col py-5 px-8 justify-center">
+    <div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
         <div class="">
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
@@ -51,10 +51,12 @@
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>
-                                        <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="w-[150px] px-5 py-2 bg-blue-400">Edit</a>
-                                        <a href="#" 
-                                        wire:click="deleteCategory({{$category->id}})"
-                                        data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="w-[150px] px-5 py-2 bg-red-500">Delete</a>
+                                        <div class="flex flex-col md:flex-row gap-y-2">
+                                            <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="w-[100px] md:w-[150px] px-4 py-2 bg-blue-400 text-center">Edit</a>
+                                            <a href="#" 
+                                            wire:click="deleteCategory({{$category->id}})"
+                                            data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="w-[100px] md:w-[150px] px-4 py-2 bg-red-500 text-center">Delete</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

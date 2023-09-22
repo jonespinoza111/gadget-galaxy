@@ -10,7 +10,7 @@
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-between items-center">
+                <div class="card-header flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
                     <h4 class="text-[20px]">Create User</h4>
                     <a href="{{ url('admin/users') }}" class="w-[200px] py-2 px-4 bg-blue-200 hover:bg-blue-300 flex justify-center items-center">Back</a>
                 </div>

@@ -2,7 +2,7 @@
 
 @section('dashboard_content')
 <div>
-    <div class="w-full flex flex-col py-5 px-8 justify-center">
+    <div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
         <div>
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>

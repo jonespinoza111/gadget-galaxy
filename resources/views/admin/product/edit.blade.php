@@ -8,7 +8,7 @@
                 @if (session('message'))
                     <div class="text-[18px] text-green-500">{{session('message')}}</div>
                 @endif
-                <div class="card-header flex flex-row justify-between items-center">
+                <div class="card-header flex flex-col sm:flex-row sm:justify-between sm:items-center gap-y-3 mb-4">
                     <h4 class="text-[20px]">Products List</h4>
                     <a href="{{ url('admin/products') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="button">Back</a>
                 </div>
@@ -38,7 +38,7 @@
                         <div id="myTabContent">
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="w-full flex flex-col gap-y-3">
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Category</label>
                                         <select name="category_id" class="w-full p-2">
                                             @foreach ($categories as $category)
@@ -46,15 +46,15 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Product Name</label>
                                         <input type="text" name="name" value="{{ $product->name }}" />
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Product Slug</label>
                                         <input type="text" name="slug" value="{{ $product->slug }}" />
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Select Brand</label>
                                         <select name="brand" class="w-full p-2">
                                             @foreach ($brands as $brand)
@@ -62,11 +62,11 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Small Description (500 Words)</label>
                                         <textarea type="text" name="small_description" rows="4">{{ $product->small_description }}</textarea>
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Description</label>
                                         <textarea type="text" name="description" rows="4">{{ $product->description }}</textarea>
                                     </div>
@@ -74,15 +74,15 @@
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                 <div class="w-full flex flex-col gap-y-3">
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Meta Title</label>
                                         <input type="text" name="meta_title" value="{{$product->meta_title}}" />
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Meta Keyword</label>
                                         <textarea type="text" name="meta_keyword" rows="4">{{$product->meta_keyword}}</textarea>
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Meta Description</label>
                                         <textarea type="text" name="meta_description" rows="4">{{$product->meta_description}}</textarea>
                                     </div>
@@ -90,23 +90,23 @@
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                 <div class="w-full flex flex-col gap-y-3">
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Original Price</label>
                                         <input type="text" name="original_price" value="{{ $product->original_price }}" />
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Selling Price</label>
                                         <input type="text" name="selling_price" value="{{ $product->selling_price }}" />
                                     </div>
-                                    <div class="flex flex-col w-[30%]">
+                                    <div class="flex flex-col w-full sm:w-[40%]">
                                         <label>Quantity</label>
                                         <input type="number" name="quantity" value="{{ $product->quantity }}" />
                                     </div>
-                                    <div class="flex flex-row w-[30%]">
+                                    <div class="flex flex-row w-full sm:w-[40%]">
                                         <label class="w-[150px]">Trending</label>
                                         <input type="checkbox" name="trending" {{ $product->trending == '1' ? 'checked' : ''}} />
                                     </div>
-                                    <div class="flex flex-row w-[30%]">
+                                    <div class="flex flex-row w-full sm:w-[40%]">
                                         <label class="w-[150px]">Status</label>
                                         <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked' : ''}} />
                                     </div>

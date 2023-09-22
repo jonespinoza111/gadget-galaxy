@@ -13,7 +13,7 @@
                         @csrf
                         @method('PUT')
                         <div class="flex flex-col gap-y-4">
-                            <div class="flex flex-row gap-x-5">
+                            <div class="flex flex-col gap-y-4 sm:flex-row gap-x-5">
                                 <div class="flex flex-col">
                                     <label>Name</label>
                                     <input type="text" value="{{ $category->name }}" name="name" class="form-control" />

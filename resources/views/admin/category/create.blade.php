@@ -12,7 +12,7 @@
                     <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col gap-y-4">
-                            <div class="flex flex-row gap-x-5">
+                            <div class="flex flex-col gap-y-4 sm:flex-row gap-x-5">
                                 <div class="flex flex-col">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control" />

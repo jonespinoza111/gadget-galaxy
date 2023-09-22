@@ -1,17 +1,17 @@
 @extends('admin')
 
 @section('dashboard_content')
-    <div class="w-full flex flex-col py-5 px-8 justify-center">
+    <div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
         <div>
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-between items-center mb-3">
+                <div class="card-header flex flex-col gap-y-3 sm:flex-row sm:justify-between sm:items-center mb-3">
                     <h4 class="text-[1.5em]">Slider List</h4>
                     <a href="{{ url('admin/sliders/create') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Add Slider</a>
                 </div>
-                <div class="card-body">
+                <div class="card-body overflow-x-auto">
                     <table class="border-spacing-4 border-separate border">
                         <thead>
                             <tr>
@@ -34,9 +34,11 @@
                                     </td>
                                     <td>{{$slider->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>
-                                        <a href="{{ url('admin/sliders/'.$slider->id.'/edit') }}" class="w-[150px] px-5 py-2 bg-blue-400 hover:bg-blue-500">Edit</a>
-                                        <a href="{{ url('admin/sliders/'.$slider->id.'/delete') }}" onclick="return confirm('Are you sure you want to delete this slider?')" 
-                                        class="w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500">Delete</a>
+                                        <div class="flex flex-col md:flex-row gap-y-2">
+                                            <a href="{{ url('admin/sliders/'.$slider->id.'/edit') }}" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400 hover:bg-blue-500">Edit</a>
+                                            <a href="{{ url('admin/sliders/'.$slider->id.'/delete') }}" onclick="return confirm('Are you sure you want to delete this slider?')" 
+                                            class="w-[100px] md:w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500">Delete</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

@@ -1,16 +1,16 @@
 <div>
     @include('livewire.admin.brand.modal-form')
-    <div class="w-full flex flex-col py-5 px-8 justify-center">
+    <div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
         <div>
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-between items-center mb-3">
+                <div class="card-header flex flex-col sm:flex-row sm:justify-between sm:items-center gap-y-3 mb-3">
                     <h4 class="text-[1.5em]">Brands List</h4>
                     <button data-modal-target="addBrandModal" data-modal-toggle="addBrandModal" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="button">Add Brands</button>
                 </div>
-                <div class="card-body">
+                <div class="card-body overflow-x-auto">
                     <table class="border-spacing-4 border-separate border">
                         <thead>
                             <tr>
@@ -38,12 +38,14 @@
                                     <td>{{$brand->slug}}</td>
                                     <td>{{$brand->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>
-                                        <a href="#" 
-                                        wire:click="editBrand({{$brand->id}})"
-                                        data-modal-target="updateBrandModal" data-modal-toggle="updateBrandModal" class="w-[150px] px-5 py-2 bg-blue-400">Edit</a>
-                                        <a href="#" 
-                                        wire:click="deleteBrand({{$brand->id}})"
-                                        data-modal-target="deleteBrandModal" data-modal-toggle="deleteBrandModal" class="w-[150px] px-5 py-2 bg-red-500">Delete</a>
+                                        <div class="flex flex-col md:flex-row gap-y-2">
+                                            <a href="#" 
+                                            wire:click="editBrand({{$brand->id}})"
+                                            data-modal-target="updateBrandModal" data-modal-toggle="updateBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400">Edit</a>
+                                            <a href="#" 
+                                            wire:click="deleteBrand({{$brand->id}})"
+                                            data-modal-target="deleteBrandModal" data-modal-toggle="deleteBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-red-500">Delete</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
