@@ -2,18 +2,18 @@
 @section("dashboard_content")
     <div class="w-full flex flex-col py-10 px-8 justify-center">
         <div class="flex flex-col">
-            <h3>My Orders</h3>
+            <h3 class="text-[1.5em]">My Orders</h3>
         </div>
         <div class="card-body">
             <form action="" method="GET">
-                <div class="flex flex-row gap-x-[1em] items center">
+                <div class="flex flex-row gap-x-[1em] my-3 items center">
                     <div>
                         <label>Filter by Date</label>
                         <input type="date" name="date" value="{{ Request::get('date') ?? date('Y-m-d') }}" />
                     </div>
                     <div class="flex flex-row items-center">
                         <label class="mr-2">Filter by Date</label>
-                        <select name="status" class="">
+                        <select name="status" class="w-[200px] py-2 px-4">
                             <option value="">Select Status</option>
                             <option value="in-progress" {{ Request::get('status') == 'in-progress' ? 'selected' : ''}}>In Progress</option>
                             <option value="completed" {{ Request::get('status') == 'completed' ? 'selected' : ''}}>Completed</option>
@@ -23,7 +23,7 @@
                         </select>
                     </div>
                     <div class="">
-                        <button class="w-[200px] px-4 py-2 bg-green-200" type="submit">Filter</button>
+                        <button class="w-[200px] px-4 py-2 bg-green-200 hover:bg-green-300" type="submit">Filter</button>
                     </div>
                 </div>
             </form>
@@ -49,7 +49,7 @@
                             <td>{{$order->created_at->format('d-m-Y')}}</td>
                             <td>{{$order->status_message}}</td>
                             <td>
-                                <a href="{{ url('admin/orders/'.$order->id) }}" class="w-[150px] px-5 py-2 bg-blue-400">View</a>
+                                <a href="{{ url('admin/orders/'.$order->id) }}" class="w-[150px] px-5 py-2 bg-blue-200 hover:bg-blue-300">View</a>
                             </td>
                         </tr>
                     @empty

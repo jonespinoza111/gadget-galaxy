@@ -8,9 +8,9 @@
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
+                <div class="card-header flex flex-row justify-between items-center">
                     <h4 class="text-[20px]">Products List</h4>
-                    <a href="{{ url('admin/products') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="button">Back</a>
+                    <a href="{{ url('admin/products') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="button">Back</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ url('admin/products') }}" method="POST" enctype="multipart/form-data">
@@ -36,89 +36,83 @@
                         </div>
                         <div id="myTabContent">
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div>
-                                    <label>Category</label>
-                                    <select name="category_id">
-                                        @foreach ($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Product Name</label>
-                                    <input type="text" name="name" />
-                                </div>
-                                <div>
-                                    <label>Product Slug</label>
-                                    <input type="text" name="slug" />
-                                </div>
-                                <div>
-                                    <label>Select Brand</label>
-                                    <select name="brand">
-                                        @foreach ($brands as $brand)
-                                            <option value="{{$brand->name}}">{{$brand->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Small Description (500 Words)</label>
-                                    <textarea type="text" name="small_description" rows="4"></textarea>
-                                </div>
-                                <div>
-                                    <label>Description</label>
-                                    <textarea type="text" name="description" rows="4"></textarea>
+                                <div class="w-full flex flex-col gap-y-3">
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Category</label>
+                                        <select name="category_id" class="w-full p-2">
+                                            @foreach ($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Product Name</label>
+                                        <input type="text" name="name" />
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Product Slug</label>
+                                        <input type="text" name="slug" />
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Select Brand</label>
+                                        <select name="brand" class="w-full p-2">
+                                            @foreach ($brands as $brand)
+                                                <option value="{{$brand->name}}">{{$brand->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Small Description (500 Words)</label>
+                                        <textarea type="text" name="small_description" rows="4"></textarea>
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Description</label>
+                                        <textarea type="text" name="description" rows="4"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                <div>
-                                    <label>Meta Title</label>
-                                    <input type="text" name="meta_title" />
-                                </div>
-                                <div>
-                                    <label>Meta Keyword</label>
-                                    <textarea type="text" name="meta_keyword" rows="4"></textarea>
-                                </div>
-                                <div>
-                                    <label>Meta Description</label>
-                                    <textarea type="text" name="meta_description" rows="4"></textarea>
+                                <div class="w-full flex flex-col gap-y-3">
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Meta Title</label>
+                                        <input type="text" name="meta_title" />
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Meta Keyword</label>
+                                        <textarea type="text" name="meta_keyword" rows="4"></textarea>
+                                    </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Meta Description</label>
+                                        <textarea type="text" name="meta_description" rows="4"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                                <div>
-                                    <div>
-                                        <div>
-                                            <label>Original Price</label>
-                                            <input type="text" name="original_price" />
-                                        </div>
+                                <div class="w-full flex flex-col gap-y-3">
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Original Price</label>
+                                        <input type="text" name="original_price" />
                                     </div>
-                                    <div>
-                                        <div>
-                                            <label>Selling Price</label>
-                                            <input type="text" name="selling_price" />
-                                        </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Selling Price</label>
+                                        <input type="text" name="selling_price" />
                                     </div>
-                                    <div>
-                                        <div>
-                                            <label>Quantity</label>
-                                            <input type="number" name="quantity" />
-                                        </div>
+                                    <div class="flex flex-col w-[30%]">
+                                        <label>Quantity</label>
+                                        <input type="number" name="quantity" />
                                     </div>
-                                    <div>
-                                        <div>
-                                            <label>Trending</label>
-                                            <input type="checkbox" name="trending" />
-                                        </div>
+                                    <div class="flex flex-row items-center gap-x-3 w-[30%]">
+                                        <label class="w-[150px]">Trending</label>
+                                        <input type="checkbox" name="trending" />
                                     </div>
-                                    <div>
-                                        <div>
-                                            <label>Status</label>
-                                            <input type="checkbox" name="status" />
-                                        </div>
+                                    <div class="flex flex-row items-center gap-x-3 w-[30%]">
+                                        <label class="w-[150px]">Status</label>
+                                        <input type="checkbox" name="status" />
                                     </div>
                                 </div>
                             </div>
                             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                <div>
+                                <div class="w-full flex flex-col gap-y-3">
                                     <label>Upload Product Images</label>
                                     <input type="file" name="image[]" multiple />
                                 </div>
@@ -129,7 +123,7 @@
                                     <div class="flex flex-row gap-x-3 gap-y-3 flex-wrap">
                                         @forelse ($colors as $colorItem)
                                             <div class="border-2 border-gray-300 px-4 py-2">
-                                                <div class="flex flex-col">
+                                                <div class="flex flex-col gap-y-3">
                                                     <span>
                                                         Color: <input type="checkbox" name="colors[{{$colorItem->id}}]" value="{{$colorItem->id}}" /> {{$colorItem->name}}
                                                     </span>
@@ -148,7 +142,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center">Submit</button>
+                        <button type="submit" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center">Submit</button>
                     </form>
                 </div>
             </div>

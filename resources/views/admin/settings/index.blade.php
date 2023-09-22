@@ -13,7 +13,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Website</h3>
+                        <h3 class="text-[1.2em] font-semibold">Website</h3>
                     </div>
                     <div class="card-body my-3">
                         <div class="flex flex-row flex-wrap gap-3">
@@ -31,11 +31,11 @@
                             </div>
                             <div class="w-[45%] flex flex-col">
                                 <label>Meta Keyword</label>
-                                <textarea name="meta_keyword" rows="3">{{ $settings->meta_keyword ?? '' }}</textarea>
+                                <textarea name="meta_keyword" class="p-2" rows="3">{{ $settings->meta_keyword ?? '' }}</textarea>
                             </div>
                             <div class="w-[45%] flex flex-col">
                                 <label>Meta Description</label>
-                                <textarea name="meta_description" rows="3">{{ $settings->meta_description ?? '' }}</textarea>
+                                <textarea name="meta_description" class="p-2" rows="3">{{ $settings->meta_description ?? '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
 
                 <div class="card my-[2em]">
                     <div class="card-header">
-                        <h3>Website - Information</h3>
+                        <h3 class="text-[1.2em] font-semibold">Website - Information</h3>
                     </div>
                     <div class="card-body">
                         <div class="flex flex-row flex-wrap gap-3">
@@ -75,7 +75,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Website - Social Media</h3>
+                        <h3 class="text-[1.2em] font-semibold">Website - Social Media</h3>
                     </div>
                     <div class="card-body">
                         <div class="flex flex-row flex-wrap gap-3">

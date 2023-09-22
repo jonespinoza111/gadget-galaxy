@@ -1,14 +1,14 @@
 <div>
     @include('livewire.admin.brand.modal-form')
-    <div>
+    <div class="w-full flex flex-col py-5 px-8 justify-center">
         <div>
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
-                    <h4 class="text-[20px]">Brands List</h4>
-                    <button data-modal-target="addBrandModal" data-modal-toggle="addBrandModal" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="button">Add Brands</button>
+                <div class="card-header flex flex-row justify-between items-center mb-3">
+                    <h4 class="text-[1.5em]">Brands List</h4>
+                    <button data-modal-target="addBrandModal" data-modal-toggle="addBrandModal" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="button">Add Brands</button>
                 </div>
                 <div class="card-body">
                     <table class="border-spacing-4 border-separate border">

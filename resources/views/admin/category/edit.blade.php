@@ -4,9 +4,9 @@
     <div>
         <div>
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
+                <div class="card-header flex flex-row justify-between items-center">
                     <h4 class="text-[20px]">Edit Category</h4>
-                    <a href="{{ url('admin/category') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Back</a>
+                    <a href="{{ url('admin/category') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Back</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ url('admin/category/'.$category->id) }}" method="POST" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
                                 <textarea type="text" name="description" class="form-control" rows="3">{{ $category->description }}</textarea>
                             </div>
                             <div class="flex flex-row justify-start items-center">
-                                <div>
+                                <div class="flex flex-col gap-y-3">
                                     <label>Image</label>
                                     <input type="file" name="image" class="form-control" />
                                     <img src="{{ asset('/uploads/category/'.$category->image) }}" width="60px" height="60px" />
@@ -46,15 +46,15 @@
                                 </div>
                                 <div class="flex flex-col">
                                     <label>Meta Keyword</label>
-                                    <textarea name="meta_keyword" >{{ $category->meta_keyword }}</textarea>
+                                    <textarea name="meta_keyword" class="p-2" >{{ $category->meta_keyword }}</textarea>
                                 </div>
                                 <div class="flex flex-col">
                                     <label>Meta Description</label>
-                                    <textarea name="meta_description">{{ $category->meta_description }}</textarea>
+                                    <textarea name="meta_description" class="p-2">{{ $category->meta_description }}</textarea>
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Save</button>
+                                <button type="submit" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Save</button>
                             </div>
                         </div>
                     </form>

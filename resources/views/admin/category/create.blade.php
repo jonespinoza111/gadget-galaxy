@@ -4,9 +4,9 @@
     <div>
         <div>
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
+                <div class="card-header flex flex-row justify-between items-center">
                     <h4 class="text-[20px]">Add Category</h4>
-                    <a href="{{ url('admin/category') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Back</a>
+                    <a href="{{ url('admin/category') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Back</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
@@ -40,19 +40,19 @@
                                 <h2 class="text-[18px] font-semibold">SEO Tags</h2>
                                 <div class="flex flex-col">
                                     <label>Meta Title</label>
-                                    <textarea name="meta_title"></textarea>
+                                    <input type="text" name="meta_title" />
                                 </div>
                                 <div class="flex flex-col">
                                     <label>Meta Keyword</label>
-                                    <textarea name="meta_keyword" ></textarea>
+                                    <textarea name="meta_keyword" class="p-2" ></textarea>
                                 </div>
                                 <div class="flex flex-col">
                                     <label>Meta Description</label>
-                                    <textarea name="meta_description"></textarea>
+                                    <textarea name="meta_description" class="p-2"></textarea>
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Save</button>
+                                <button type="submit" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Save</button>
                             </div>
                         </div>
                     </form>

@@ -113,7 +113,7 @@
                                         <option value="cancelled" {{ Request::get('order_status') == 'cancelled' ? 'selected' : ''}}>Cancelled</option>
                                         <option value="out-for-delivery" {{ Request::get('order_status') == 'out-for-delivery' ? 'selected' : ''}}>Out for Delivery</option>
                                     </select>
-                                    <button type="submit" class="w-[200px] px-4 py-2 bg-blue-200">Update</button>
+                                    <button type="submit" class="w-[200px] px-4 py-2 bg-blue-200 hover:bg-blue-300 ml-2">Update</button>
                                 </div>
                             </div>
                         </form>

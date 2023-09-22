@@ -2,14 +2,14 @@
 
 @section('dashboard_content')
     <div>
-        <div>
+        <div class="w-full flex flex-col py-5 px-8 justify-center">
             @if (session('message'))
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-start items-center">
-                    <h4 class="text-[20px]">Colors List</h4>
-                    <a href="{{ url('admin/colors/create') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Add Color</a>
+                <div class="card-header flex flex-row justify-between items-center mb-3">
+                    <h4 class="text-[1.5em]">Colors List</h4>
+                    <a href="{{ url('admin/colors/create') }}" class="w-[200px] p-3 bg-blue-200 hover:bg-blue-300 flex justify-center items-center" type="submit">Add Color</a>
                 </div>
                 <div class="card-body">
                     <table class="border-spacing-4 border-separate border">
