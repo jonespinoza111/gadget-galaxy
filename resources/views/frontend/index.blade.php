@@ -3,14 +3,14 @@
 @section("content")
 <div class="container custom-product flex flex-row h-auto w-[100%] flex-wrap">
     
-    <div id="default-carousel" class="relative w-full bg-gray-200 my-[5em]" data-carousel="slide">
+    <div id="default-carousel" class="relative w-full bg-gray-200" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Item 1 -->
             @foreach ($sliders as $key => $slider)
                 <div class="hidden duration-700 ease-in-out relative" data-carousel-item>
                     @if ($slider->image)
-                        <img src="{{ asset("$slider->image") }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-contain" alt="...">
+                        <img src="{{ asset("$slider->image") }}" class="absolute w-full object-fill h-56 md:h-96" alt="...">
                     @endif
                 </div>
             @endforeach
@@ -42,28 +42,18 @@
         </button>
     </div>  
 
-    <div class="container">
-        <div>
-            <div>
-                <div>
-                    <h4>Welcome to Ecommerce</h4>
-                    <p>Hello there I want to be in the room as well. Can we get some other products to go with that or do we need to buy the whole lot. I promise I will do my best to accomodate your requests.</p>
-                </div>
-            </div>
+    <div class="container w-full p-10">
+        <div class="py-5 flex flex-row justify-between">
+            <h3 class="font-semibold">Trending Products</h3>
+            <a href="{{ url('new-arrivals') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
         </div>
-    </div>
-
-    <div class="container">
-        <div>
-            <div class="flex flex-col">
+        <div class="flex flex-row overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
                 @if ($trendingProducts)
-                    <div class="px-10 py-5"><h3 class="font-semibold">Trending Products</h3></div>
-                    <div class="flex flex-row gap-4 px-10 py-5">
                         @foreach ($trendingProducts as $product)    
-                            <div class="w-[25em] relative h-[500px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}" class="w-[100%]">
                                     @if ($product->productImages->count() > 0)
-                                        <img class="p-8 rounded-t-lg object-fill h-[60%]" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
+                                        <img class="p-8 rounded-t-lg object-fill h-[60%] w-full" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
                                     @endif
                                 </a>
                                 <div class="px-5 pb-5">
@@ -71,10 +61,10 @@
                                         <h3 class="text-xl font-semibold tracking-tight text-gray-400 dark:text-white">{{$product->brand}}</h3>
                                     </a>
                                     <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}">
-                                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$product->name}}</h5>
+                                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{{$product->name}}</h5>
                                     </a>
                                     <label>New</label>
-                                    <div class="flex items-center mt-2.5 mb-5">
+                                    {{-- <div class="flex items-center mt-2.5 mb-5">
                                         <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                         </svg>
@@ -91,40 +81,34 @@
                                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                         </svg>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="flex items-center justify-between">
                                         <span class="text-3xl font-bold text-gray-900 dark:text-white">${{$product->selling_price}}</span>
-                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                    </div>
                 @else
                     <div>
                         <div>No Trending Products Available</div>
                     </div>
                 @endif
-            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div>
-            <div class="flex flex-col">
+    <div class="container w-full p-10">
+        <div class="py-5 flex flex-row justify-between">
+            <h3 class="font-semibold">New Arrivals</h3>
+            <a href="{{ url('new-arrivals') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
+        </div>
+        <div class="flex flex-row justify-start overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
                 @if ($newArrivalProducts)
-                    <div class="px-10 py-5">
-                        <h3 class="font-semibold">
-                            New Arrivals
-                            <a href="{{ url('new-arrivals') }}" class="ml-2">View More</a>
-                        </h3>
-                    </div>
-                    <div class="flex flex-row gap-4 px-10 py-5">
                         @foreach ($newArrivalProducts as $product)    
-                            <div class="w-[25em] relative h-[500px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}" class="w-[100%]">
                                     @if ($product->productImages->count() > 0)
-                                        <img class="p-8 rounded-t-lg object-fill h-[60%]" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
+                                        <img class="p-8 rounded-t-lg object-fill h-[60%] w-full" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
                                     @endif
                                 </a>
                                 <div class="px-5 pb-5">
@@ -132,10 +116,10 @@
                                         <h3 class="text-xl font-semibold tracking-tight text-gray-400 dark:text-white">{{$product->brand}}</h3>
                                     </a>
                                     <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}">
-                                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$product->name}}</h5>
+                                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{{$product->name}}</h5>
                                     </a>
                                     <label>New</label>
-                                    <div class="flex items-center mt-2.5 mb-5">
+                                    {{-- <div class="flex items-center mt-2.5 mb-5">
                                         <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                         </svg>
@@ -152,21 +136,74 @@
                                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                         </svg>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="flex items-center justify-between">
                                         <span class="text-3xl font-bold text-gray-900 dark:text-white">${{$product->selling_price}}</span>
-                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                    </div>
                 @else
                     <div>
-                        <div>No New Arrival Products Available</div>
+                        <div>No New Arrivals Available</div>
                     </div>
                 @endif
-            </div>
+        </div>
+    </div>
+
+    <div class="container w-full p-10">
+        <div class="py-5 flex flex-row justify-between">
+            <h3 class="font-semibold">Featured Products</h3>
+            <a href="{{ url('featured-products') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
+        </div>
+        <div class="flex flex-row justify-start overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
+                @if ($featuredProducts)
+                        @foreach ($featuredProducts as $product)    
+                            <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}" class="w-[100%]">
+                                    @if ($product->productImages->count() > 0)
+                                        <img class="p-8 rounded-t-lg object-fill h-[60%] w-full" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
+                                    @endif
+                                </a>
+                                <div class="px-5 pb-5">
+                                    <a href="#">
+                                        <h3 class="text-xl font-semibold tracking-tight text-gray-400 dark:text-white">{{$product->brand}}</h3>
+                                    </a>
+                                    <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}">
+                                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{{$product->name}}</h5>
+                                    </a>
+                                    <label>New</label>
+                                    {{-- <div class="flex items-center mt-2.5 mb-5">
+                                        <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                        </svg>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                    </div> --}}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-3xl font-bold text-gray-900 dark:text-white">${{$product->selling_price}}</span>
+                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                @else
+                    <div>
+                        <div>No Featured Products Available</div>
+                    </div>
+                @endif
         </div>
     </div>
 

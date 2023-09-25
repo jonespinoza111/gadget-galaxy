@@ -106,6 +106,10 @@
                                         <input type="checkbox" name="trending" />
                                     </div>
                                     <div class="flex flex-row items-center gap-x-3 w-full sm:w-[40%]">
+                                        <label class="w-[150px]">Featured</label>
+                                        <input type="checkbox" name="featured" />
+                                    </div>
+                                    <div class="flex flex-row items-center gap-x-3 w-full sm:w-[40%]">
                                         <label class="w-[150px]">Status</label>
                                         <input type="checkbox" name="status" />
                                     </div>

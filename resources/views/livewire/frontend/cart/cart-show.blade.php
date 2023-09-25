@@ -6,10 +6,10 @@
             </div>
         @endif
     </div>
-    <div class="w-[80%] mx-10 mt-5 border-b-2 border-gray-400">
+    <div class="w-[80%] mx-4 md:mx-10 mt-4 md:mt-5 border-b-2 border-gray-400">
         <h2 class="text-[1.4em] font-bold">My Cart</h2>
     </div>
-    <div class="card-body px-10 py-5">
+    <div class="card-body px-4 py-4 md:px-10 md:py-5 overflow-x-auto">
         <table class="border-spacing-4 border-separate border">
             <thead>
                 <tr>
@@ -26,20 +26,22 @@
                         <tr class="">
                             <td class="">
                                 <a href="{{ url('collections/'.$cartItem->product->category->slug.'/'.$cartItem->product->slug) }}">
-                                    <label class="product-name flex flex-row items-center cursor-pointer">
+                                    <label class="product-name flex flex-col md:flex-row items-center cursor-pointer">
                                         @if ($cartItem->product->productImages)
                                             <img class="w-[80px] h-[80px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
                                         @else
                                             <img class="w-[80px] h-[80px]" src="" alt="{{$cartItem->product->name}}" />    
                                         @endif
-                                        {{$cartItem->product->name}}
+                                        <span class="mx-3">
+                                            {{$cartItem->product->name}}
+                                        </span>
                                         @if ($cartItem->productColor)
                                             <span class="mx-5"> Color: {{$cartItem->productColor->color->name}}</span>
                                         @endif
                                     </label>
                                 </a>
                             </td>
-                            <td>{{$cartItem->product->selling_price}}</td>
+                            <td>${{$cartItem->product->selling_price}}</td>
                             <td>
                                 <div class="quantity-container my-4">
                                     <label for="Quantity" class="sr-only"> Quantity </label>
@@ -79,7 +81,7 @@
                             @php $this->totalPrice += $cartItem->product->selling_price * $cartItem->quantity @endphp
                             <td class="remove">
                                 <button type="button" wire:click="removeCartItem({{ $cartItem->id }})" 
-                                class="w-[150px] px-5 py-2 bg-red-500">
+                                class="w-[100px] md:w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500">
                                     <span wire:loading.remove wire:target="removeCartItem({{ $cartItem->id }})">
                                         Remove
                                     </span>  
@@ -100,15 +102,15 @@
             </tbody>
         </table>
     </div>
-    <div class="flex flex-row justify-between w-full px-10 my-5">
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-y-3 w-full px-4 py-4 md:px-10 md:my-5">
         <div class="text-[1.2em] font-semibold">
             <h4>Get the Best Deals & Offers <a href="{{ url('/collection') }}" class="text-blue-500">Shop Now</a></h4>
         </div>
-        <div class="w-[20em] bg-white flex flex-col p-6 border-2 border-black">
+        <div class="w-full sm:w-[20em] bg-white flex flex-col p-6 border-2 border-black">
             <div class="w-full border-b-2 border-black flex flex-row justify-between mb-5 text-[1.2em] font-semibold">
                 <h4>Total:</h4> <span>${{$this->totalPrice}}</span>
             </div>
-            <a href="/checkout" type="button" class="bg-yellow-400 text-black w-full py-2">Check Out</a>
+            <a href="/checkout" type="button" class="bg-yellow-400 text-black w-full py-2 text-center">Check Out</a>
         </div>
     </div>
 </div>

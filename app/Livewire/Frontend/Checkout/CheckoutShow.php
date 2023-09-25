@@ -88,7 +88,8 @@ class CheckoutShow extends Component
     {
         $this->totalProductAmount = $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show', [
-            'totalProductAmount' => $this->totalProductAmount
+            'totalProductAmount' => $this->totalProductAmount,
+            'cartProducts' => $this->carts
         ]);
     }
 }

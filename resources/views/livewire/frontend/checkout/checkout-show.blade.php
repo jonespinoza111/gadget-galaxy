@@ -80,46 +80,30 @@
                     </h2>
                     <div class="mt-8">
                         <div class="flex flex-col space-y-4">
-                            <div class="flex space-x-4">
-                                <div>
-                                    <img src="https://source.unsplash.com/user/erondu/1600x900" alt="image"
-                                        class="w-60">
+                            @forelse ($cartProducts as $cartItem)
+                                @if ($cartItem->product)
+                                <div class="flex space-x-4">
+                                    <div>
+                                        @if ($cartItem->product->productImages)
+                                            <img class="w-[200px] h-[175px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
+                                        @else
+                                            <img class="w-[200px] h-[175px]" src="" alt="{{$cartItem->product->name}}" />    
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <h2 class="text-xl font-bold">{{$cartItem->product->name}}</h2>
+                                        <p class="text-sm">{{$cartItem->product->small_description}}</p>
+                                        <span class="text-red-600">Price</span> {{$cartItem->product->selling_price}}
+                                    </div>
                                 </div>
-                                <div>
-                                    <h2 class="text-xl font-bold">Title</h2>
-                                    <p class="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                    <span class="text-red-600">Price</span> $20
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <div>
-                                    <img src="https://source.unsplash.com/collection/190727/1600x900" alt="image"
-                                        class="w-60">
-                                </div>
-                                <div>
-                                    <h2 class="text-xl font-bold">Title</h2>
-                                    <p class="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                                    <span class="text-red-600">Price</span> $20
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
-                            </div>
+                                @endif
+                            @empty
+                            <div><h3>hello</h3></div>
+                            @endforelse
                         </div>
                     </div>
-                    <div class="flex p-4 mt-4">
-                        <h2 class="text-xl font-bold">ITEMS 2</h2>
+                    <div class="flex mt-10">
+                        <h2 class="text-xl font-bold">ITEMS {{$cartProducts->count()}}</h2>
                     </div>
                     <div
                         class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">

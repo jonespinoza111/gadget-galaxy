@@ -1,12 +1,15 @@
-<div class="w-full">
-    <div class="w-screen bg-[#EFF2F6] flex flex-row px-10 py-5">
+<div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
+    <div class="w-screen">
         @if (session()->has('message'))
             <div class="px-5 py-3 bg-green-200 w-full">
                 <h3>{{session('message')}}</h3>
             </div>
         @endif
     </div>
-    <div class="card-body px-10 py-5">
+    <div class="card-header px-4 flex flex-row justify-between items-center">
+        <h4 class="text-[1.5em]">My Wishlist</h4>
+    </div>
+    <div class="card-body px-4 sm:px-10 py-5 overflow-x-auto">
         <table class="border-spacing-4 border-separate border">
             <thead>
                 <tr>
@@ -27,7 +30,7 @@
                                     </label>
                                 </a>
                             </td>
-                            <td>{{$wishlistItem->product->selling_price}}</td>
+                            <td>${{$wishlistItem->product->selling_price}}</td>
                             <td class="remove">
                                 <button type="button" wire:click="removeWishlistItem({{ $wishlistItem->id }})" 
                                 class="w-[150px] px-5 py-2 bg-red-500">

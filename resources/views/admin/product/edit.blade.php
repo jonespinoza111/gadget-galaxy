@@ -107,6 +107,10 @@
                                         <input type="checkbox" name="trending" {{ $product->trending == '1' ? 'checked' : ''}} />
                                     </div>
                                     <div class="flex flex-row w-full sm:w-[40%]">
+                                        <label class="w-[150px]">Featured</label>
+                                        <input type="checkbox" name="feature" {{ $product->featured == '1' ? 'checked' : ''}} />
+                                    </div>
+                                    <div class="flex flex-row w-full sm:w-[40%]">
                                         <label class="w-[150px]">Status</label>
                                         <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked' : ''}} />
                                     </div>

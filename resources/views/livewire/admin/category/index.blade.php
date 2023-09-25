@@ -30,7 +30,7 @@
                 <div class="text-[18px] text-green-500">{{session('message')}}</div>
             @endif
             <div>
-                <div class="card-header flex flex-row justify-between items-center">
+                <div class="card-header flex flex-row justify-between items-center gap-y-3">
                     <h4 class="text-[1.5em]">Category</h4>
                     <a href="{{ url('admin/category/create') }}" class="w-[200px] p-3 bg-blue-200 flex justify-center items-center" type="submit">Add Category</a>
                 </div>
@@ -51,11 +51,11 @@
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>
-                                        <div class="flex flex-col md:flex-row gap-y-2">
-                                            <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="w-[100px] md:w-[150px] px-4 py-2 bg-blue-400 text-center">Edit</a>
+                                        <div class="flex flex-col md:flex-row gap-y-2 gap-x-2">
+                                            <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="w-[100px] md:w-[150px] px-4 py-2 bg-blue-400 hover:bg-blue-500 text-center">Edit</a>
                                             <a href="#" 
                                             wire:click="deleteCategory({{$category->id}})"
-                                            data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="w-[100px] md:w-[150px] px-4 py-2 bg-red-500 text-center">Delete</a>
+                                            data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="w-[100px] md:w-[150px] px-4 py-2 bg-red-400 hover:bg-red-500 text-center">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

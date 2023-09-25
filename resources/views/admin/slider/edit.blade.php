@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="flex flex-col w-full sm:w-[40%]">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control px-2" rows="3">{{$slider->description}}</textarea>
+                                    <textarea name="description" class="form-control p-2" rows="3">{{$slider->description}}</textarea>
                                 </div>
                                 <div class="flex flex-col gap-y-3 w-full sm:w-[40%]">
                                     <label>Image</label>

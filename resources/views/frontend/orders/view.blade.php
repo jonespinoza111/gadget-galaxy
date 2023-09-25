@@ -2,14 +2,14 @@
 @section('title','Order Details')
 @section("content")
     <div class="w-full flex flex-col py-10 px-8 justify-center">
-        <div class="flex flex-row w-full">
-            <h3>Order Details</h3>
-            <a href="{{ url('orders') }}" class="w-[200px] bg-blue-200 px-4 py-2">Back</a>
+        <div class="flex flex-col sm:flex-row w-full mb-4 gap-x-3 gap-y-3">
+            <h3 class="text-[1.5em]">Order Details</h3>
+            <a href="{{ url('orders') }}" class="w-[200px] bg-blue-200 hover:bg-blue-300 text-center px-4 py-2">Back</a>
         </div>
         <div class="flex flex-col gap-x-6 gap-y-6">
-            <div class="flex flex-row">
+            <div class="flex flex-col md:flex-row gap-y-3">
                 <div>
-                    <h4>Details</h4>
+                    <h4 class="font-semibold">Details</h4>
                     <h5>Order ID: {{$order->id}}</h5>
                     <h5>Tracking No: {{$order->tracking_no}}</h5>
                     <h5>Ordered Date: {{$order->created_at->format('d-m-Y h:i A')}}</h5>
@@ -17,7 +17,7 @@
                     <h6>Order Status: {{$order->status_message}}</h6>
                 </div>
                 <div>
-                    <h4>User Details</h4>
+                    <h4 class="font-semibold">User Details</h4>
                     <h5>Fullname: {{$order->fullname}}</h5>
                     <h5>Email: {{$order->email}}</h5>
                     <h5>Phone: {{$order->phone}}</h5>
@@ -26,8 +26,8 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <h5>Order Items</h5>
-                <div>
+                <h5 class="font-semibold">Order Items</h5>
+                <div class="overflow-x-auto">
                     <table class="border-spacing-4 border-separate border">
                         <thead>
                             <tr>
@@ -75,7 +75,7 @@
                                 </tr>
                             @endforelse
                             <tr>
-                                <td class="font-bold">Total Amount:</td>
+                                <td colspan="5" class="font-bold">Total Amount:</td>
                                 <td class="font-bold">${{$totalPrice}}</td>
                             </tr>
                         </tbody>

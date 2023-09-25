@@ -12,9 +12,10 @@ class FrontendController extends Controller
 {
     public function index() {
         $sliders = Slider::where('status','0')->get();
-        $trendingProducts = ShopProduct::where('trending', '1')->latest()->take(15)->get();
-        $newArrivalProducts = ShopProduct::latest()->take(3)->get();
-        return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalProducts'));
+        $trendingProducts = ShopProduct::where('trending', '1')->latest()->take(8)->get();
+        $newArrivalProducts = ShopProduct::latest()->take(8)->get();
+        $featuredProducts = ShopProduct::where('featured', '1')->latest()->take(8)->get();
+        return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalProducts', 'featuredProducts'));
     }
 
     public function categories() {
@@ -55,6 +56,12 @@ class FrontendController extends Controller
         $newArrivalProducts = ShopProduct::latest()->take(3)->get();
         return view('frontend.pages.new-arrival', compact('newArrivalProducts'));
     }
+
+    public function featuredProducts() {
+        $featuredProducts = ShopProduct::where('featured', '1')->latest()->get();
+        return view('frontend.pages.featured-products', compact('featuredProducts'));
+    }
+
 
     public function searchProducts(Request $request) {
         if ($request->search) {

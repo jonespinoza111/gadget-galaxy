@@ -38,13 +38,13 @@
                                     <td>{{$brand->slug}}</td>
                                     <td>{{$brand->status == '1' ? 'Hidden' : 'Visible'}}</td>
                                     <td>
-                                        <div class="flex flex-col md:flex-row gap-y-2">
+                                        <div class="flex flex-col md:flex-row gap-y-2 gap-x-2">
                                             <a href="#" 
                                             wire:click="editBrand({{$brand->id}})"
-                                            data-modal-target="updateBrandModal" data-modal-toggle="updateBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400">Edit</a>
+                                            data-modal-target="updateBrandModal" data-modal-toggle="updateBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400 hover:bg-blue-500 text-center">Edit</a>
                                             <a href="#" 
                                             wire:click="deleteBrand({{$brand->id}})"
-                                            data-modal-target="deleteBrandModal" data-modal-toggle="deleteBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-red-500">Delete</a>
+                                            data-modal-target="deleteBrandModal" data-modal-toggle="deleteBrandModal" class="w-[100px] md:w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500 text-center">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

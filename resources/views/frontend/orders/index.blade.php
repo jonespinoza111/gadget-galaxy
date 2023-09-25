@@ -1,11 +1,11 @@
 @extends('main')
 @section('title','My Orders')
 @section("content")
-    <div class="w-full flex flex-col py-10 px-8 justify-center">
+    <div class="w-full flex flex-col py-4 px-4 md:py-10 md:px-8 justify-center">
         <div class="flex flex-col">
-            <h3>My Orders</h3>
+            <h3 class="text-[1.5em] mb-4">My Orders</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body overflow-x-auto">
             <table class="border-spacing-4 border-separate border">
                 <thead>
                     <tr>
