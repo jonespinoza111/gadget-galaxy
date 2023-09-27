@@ -41,17 +41,15 @@ Route::get('/logout', function () {
 Route::view('/register','register');
 Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
-Route::get('/',[ProductController::class,'index']);
-// Route::get('/home', [FrontendController::class,'index']);
-// Route::get('/collections', [FrontendController::class,'categories']);
-// Route::get('/collections/{category_slug}', [FrontendController::class,'products']);
-// Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class,'productView']);
+// Route::get('/',[ProductController::class,'index']);
 Route::get('/wishlist', [WishlistController::class,'index']);
 Route::get('/cart', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/thank-you', [FrontendController::class,'thankyou']);
+
 Route::get('/orders', [OrderController::class,'index']);
 Route::get('/orders/{orderId}', [OrderController::class,'show']);
+
 Route::get('profile', [UserController::class, 'index']);
 Route::post('profile', [UserController::class, 'updateUserDetails']);
 Route::get('change-password', [UserController::class, 'passwordCreate']);
@@ -67,6 +65,7 @@ Route::post('placeorder',[ProductController::class,'placeOrder']);
 Route::get('myorders',[ProductController::class,'myOrders']);
 
 Route::controller(FrontendController::class)->group(function () {
+    Route::get('/', 'index');
     Route::get('/home', 'index');
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');

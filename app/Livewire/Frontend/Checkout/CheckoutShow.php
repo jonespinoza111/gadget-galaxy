@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Frontend\Checkout;
 
+use App\Mail\PlaceOrderMailable;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Session;
 use Illuminate\Support\Str;
@@ -68,8 +70,13 @@ class CheckoutShow extends Component
         $process = $this->placeOrder();
         if ($process) {
             Cart::where('user_id', Session::get('user')['id'])->delete();
-            session()->flash('message', 'Order Placed Successfully');
+            try {
+                $order = Order::findOrFail($process->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            } catch(\Exception $e) {
 
+            }
+            session()->flash('message', 'Order Placed Successfully');
             return redirect()->to('thank-you');
         } else {
             session()->flash('message', 'Something Went Wrong!');

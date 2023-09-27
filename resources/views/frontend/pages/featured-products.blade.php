@@ -2,7 +2,7 @@
 @section('title','Featured Products')
 @section("content")
     <div>
-        <div class="container">
+        <div class="w-screen pb-10">
             <div>
                 <div class="flex flex-col">
                         <div class="px-10 py-5"><h3 class="font-semibold">Featured Products</h3></div>

@@ -17,31 +17,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-    <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
+    {{-- <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
         <!-- Grid -->
         <div class="mb-5 pb-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
           <div>
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Invoice</h2>
           </div>
-          <!-- Col -->
-      
-          {{-- <div class="inline-flex gap-x-2">
-            <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" href="#">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-              </svg>
-              Invoice PDF
-            </a>
-            <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" href="#">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
-                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-              </svg>
-              Print
-            </a>
-          </div> --}}
-          <!-- Col -->
         </div>
         <!-- End Grid -->
       
@@ -217,6 +198,147 @@
           </div>
         </div>
         <!-- End Flex -->
+    </div> --}}
+
+    <div class="mx-6 my-8">
+      <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Invoice</h3>
+    </div>
+    <div class="mx-6 my-8">
+      <table class="w-full border-collapse">
+        <tr>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Order ID:</dt>
+              <dd>
+                <a href="#" class="text-blue-600 underline">{{$order->id}}</a>
+              </dd>
+            </dl>
+          </td>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Tracking No.:</dt>
+              <dd>{{$order->tracking_no}}</dd>
+            </dl>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Ordered Date:</dt>
+              <dd>{{$order->created_at->format('d-m-Y h:i A')}}</dd>
+            </dl>
+          </td>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Payment Method:</dt>
+              <dd>{{$order->payment_method}}</dd>
+            </dl>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Order Status:</dt>
+              <dd>{{$order->status_message}}</dd>
+            </dl>
+          </td>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Fullname:</dt>
+              <dd>{{$order->fullname}}</dd>
+            </dl>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Email:</dt>
+              <dd>{{$order->email}}</dd>
+            </dl>
+          </td>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Phone:</dt>
+              <dd>{{$order->phone}}</dd>
+            </dl>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Address:</dt>
+              <dd>{{$order->address}}</dd>
+            </dl>
+          </td>
+          <td class="py-2 px-4 border-b">
+            <dl>
+              <dt class="text-gray-500">Pin Code:</dt>
+              <dd>{{$order->pincode}}</dd>
+            </dl>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="border border-gray-200 p-4 rounded-lg space-y-4 dark:border-gray-700 mx-6 my-8">
+      <table class="col-span-6 w-full" >
+        <thead>
+          <tr>
+            <th class="text-left text-xs w-[200px] font-medium text-gray-500 uppercase">ID</th>
+            <th class="text-left text-xs w-[350px] font-medium text-gray-500 uppercase">Product</th>
+            <th class="text-left text-xs w-[350px] font-medium text-gray-500 uppercase">Price</th>
+            <th class="text-left text-xs w-[350px] font-medium text-gray-500 uppercase">Quantity</th>
+            <th class="text-left text-xs w-[350px] font-medium text-gray-500 uppercase">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @php
+            $totalPrice = 0;    
+          @endphp
+          @forelse ($order->orderItems as $orderItem)
+          <tr class="">
+            <td colspan="1">
+              <p class="font-medium text-gray-800 dark:text-gray-200">{{$orderItem->id}}</p>
+            </td>
+            <td colspan="1">
+              <p class="text-gray-800 dark:text-gray-200">
+                {{$orderItem->product->name}}
+                @if ($orderItem->productColor)
+                @if ($orderItem->productColor->color)
+                <span>- Color: {{$orderItem->productColor->color->name}}</span>
+                @endif
+                @endif
+              </p>
+            </td>
+            <td colspan="1">
+              <p class="text-gray-800 dark:text-gray-200">${{$orderItem->price}}</p>
+            </td>
+            <td colspan="1">
+              <p class="sm:text-left text-gray-800 dark:text-gray-200">{{$orderItem->quantity}}</p>
+            </td>
+            <td colspan="1">
+              <p class="sm:text-left text-gray-800 font-semibold dark:text-gray-200">${{$orderItem->quantity * $orderItem->price}}</p>
+            </td>
+          </tr>
+          @php
+            $totalPrice += $orderItem->quantity * $orderItem->price;    
+          @endphp
+          @empty
+          <tr>
+            <td colspan="6">
+              <p>No Order Items</p>
+            </td>
+          </tr>
+          @endforelse
+          <tr class="border-t-2 border-gray-500">
+            <td colspan="4">Total: </td>
+            <td colspan="1">
+              <p class="sm:text-left text-gray-800 font-semibold dark:text-gray-200">${{$totalPrice ?? 'NA'}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     

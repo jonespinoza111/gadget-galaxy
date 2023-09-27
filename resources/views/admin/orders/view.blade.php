@@ -8,11 +8,11 @@
         <div class="w-full flex flex-col py-4 px-3 md:py-10 md:px-8 justify-center">
             <div class="flex flex-col md:flex-row gap-y-3 w-full justify-between">
                 <h3 class="text-[1.5em]">Order Details</h3>
-                <div class="buttons-container flex flex-col sm:flex-row gap-y-1">
-                    <a href="{{ url('admin/orders') }}" class="w-[200px] bg-blue-200 hover:bg-blue-300 px-4 py-2">Back</a>
-                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="w-[200px] bg-green-200 hover:bg-green-300 px-4 py-2">Download Invoice</a>
-                    <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="w-[200px] bg-blue-200  hover:bg-blue-300 px-4 py-2">View Invoice</a>
-                    <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" target="_blank" class="w-[200px] bg-purple-200 hover:bg-purple-300 px-4 py-2">Send  Invoice Via Mail</a>
+                <div class="buttons-container flex flex-col sm:flex-row gap-y-1 gap-x-1">
+                    <a href="{{ url('admin/orders') }}" class="w-[200px] bg-blue-200 hover:bg-blue-300 px-4 py-2 text-center">Back</a>
+                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="w-[200px] bg-green-200 hover:bg-green-300 px-4 py-2 text-center">Download Invoice</a>
+                    <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="w-[200px] bg-blue-200  hover:bg-blue-300 px-4 py-2 text-center">View Invoice</a>
+                    <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" class="w-[200px] bg-purple-200 hover:bg-purple-300 px-4 py-2 text-center">Send  Invoice Via Mail</a>
                 </div>
             </div>
             <div class="flex flex-col gap-x-6 gap-y-6">

@@ -1,7 +1,7 @@
 @extends('main')
 @section('title','Home Page')
 @section("content")
-<div class="container custom-product flex flex-row h-auto w-[100%] flex-wrap">
+<div class="flex flex-col h-auto w-[100%]">
     
     <div id="default-carousel" class="relative w-full bg-gray-200" data-carousel="slide">
         <!-- Carousel wrapper -->
@@ -42,7 +42,7 @@
         </button>
     </div>  
 
-    <div class="container w-full p-10">
+    <div class="w-full p-10">
         <div class="py-5 flex flex-row justify-between">
             <h3 class="font-semibold">Trending Products</h3>
             <a href="{{ url('new-arrivals') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <div class="container w-full p-10">
+    <div class="w-full p-10">
         <div class="py-5 flex flex-row justify-between">
             <h3 class="font-semibold">New Arrivals</h3>
             <a href="{{ url('new-arrivals') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <div class="container w-full p-10">
+    <div class="w-full p-10">
         <div class="py-5 flex flex-row justify-between">
             <h3 class="font-semibold">Featured Products</h3>
             <a href="{{ url('featured-products') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>

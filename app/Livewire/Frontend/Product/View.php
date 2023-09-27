@@ -10,7 +10,7 @@ use Session;
 
 class View extends Component
 {
-    public $category, $product, $productColorQuantity, $quantityCount = 1, $productColorId; 
+    public $category, $product, $productColorQuantity, $quantityCount = 1, $productColorId, $currentProductImage, $randomString = 'randomHere'; 
 
     public function colorSelected($productColorId)  {
         $this->productColorId = $productColorId;
@@ -120,12 +120,14 @@ class View extends Component
         $this->category = $category;
         $this->product = $product;
     }
-
     public function render()
     {
         return view('livewire.frontend.product.view', [
             'category' => $this->category,
             'product' => $this->product,
+            'currentColorId' => $this->productColorId,
+            'currentImage' => $this->currentProductImage,
+            'randomString' => $this->randomString
         ]);
     }
 }

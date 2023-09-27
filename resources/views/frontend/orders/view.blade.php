@@ -7,7 +7,7 @@
             <a href="{{ url('orders') }}" class="w-[200px] bg-blue-200 hover:bg-blue-300 text-center px-4 py-2">Back</a>
         </div>
         <div class="flex flex-col gap-x-6 gap-y-6">
-            <div class="flex flex-col md:flex-row gap-y-3">
+            <div class="flex flex-col md:flex-row gap-y-3 gap-x-10">
                 <div>
                     <h4 class="font-semibold">Details</h4>
                     <h5>Order ID: {{$order->id}}</h5>

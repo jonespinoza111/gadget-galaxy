@@ -85,9 +85,9 @@
                                 <div class="flex space-x-4">
                                     <div>
                                         @if ($cartItem->product->productImages)
-                                            <img class="w-[200px] h-[175px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
+                                            <img class="w-[200px] h-[135px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
                                         @else
-                                            <img class="w-[200px] h-[175px]" src="" alt="{{$cartItem->product->name}}" />    
+                                            <img class="w-[200px] h-[135px]" src="" alt="{{$cartItem->product->name}}" />    
                                         @endif
                                     </div>
                                     <div>
