@@ -12,14 +12,13 @@
     <meta name="description" content="@yield('meta_description')">
     <meta name="author" content="JE">
     
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body class="w-[100%]">
     {{View::make('frontend.navbar.index')}}
     @yield('content')
     {{View::make('footer')}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 </html>
