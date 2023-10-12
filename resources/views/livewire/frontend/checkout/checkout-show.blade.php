@@ -16,7 +16,7 @@
                         <div class="w-full">
                             <label for="fullname" class="block mb-3 text-sm font-semibold text-gray-500">Full
                                 Name</label>
-                            <input wire:model.defer="fullname" type="text" placeholder="Full Name"
+                            <input wire:model.defer="fullname" id="fullname" type="text" placeholder="Full Name"
                                 class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600">
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="w-full">
                             <label for="email"
                                 class="block mb-3 text-sm font-semibold text-gray-500">Email</label>
-                            <input wire:model.defer="email" type="text" placeholder="Email"
+                            <input wire:model.defer="email" id="email" type="text" placeholder="Email"
                                 class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600">
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="w-full">
                             <label for="phone"
                                 class="block mb-3 text-sm font-semibold text-gray-500">Phone Number</label>
-                            <input wire:model.defer="phone" type="text" placeholder="Phone Number"
+                            <input wire:model.defer="phone" id="phone" type="text" placeholder="Phone Number"
                                 class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600">
                         </div>
                     </div>
@@ -42,20 +42,20 @@
                                 class="block mb-3 text-sm font-semibold text-gray-500">Address</label>
                             <textarea
                                 class="w-full px-4 py-3 text-xs border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                wire:model.defer="address" cols="20" rows="4" placeholder="Address"></textarea>
+                                wire:model.defer="address" id="address" cols="20" rows="4" placeholder="Address"></textarea>
                         </div>
                     </div>
                     <div class="space-x-0 lg:flex lg:space-x-4">
                         <div class="w-full lg:w-1/2">
                             <label for="city"
                                 class="block mb-3 text-sm font-semibold text-gray-500">City</label>
-                            <input wire:model.defer="city" type="text" placeholder="City"
+                            <input wire:model.defer="city" id="city" type="text" placeholder="City"
                                 class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600">
                         </div>
                         <div class="w-full lg:w-1/2 ">
                             <label for="pincode" class="block mb-3 text-sm font-semibold text-gray-500">
                                 Pin Code</label>
-                            <input wire:model.defer="pincode" type="text" placeholder="Pin Code"
+                            <input wire:model.defer="pincode" id="pincode" type="text" placeholder="Pin Code"
                                 class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600">
                         </div>
                     </div>
@@ -64,6 +64,24 @@
                             <input type="checkbox"
                                 class="w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1">
                             <span class="ml-2">Save this information for next time</span></label>
+                    </div>
+                    <div class="form-group my-5" wire:ignore>
+                        <label class="font-bold">Payment Method</label>
+                        <div class="flex flex-col my-3">
+                            {{-- <div>
+                                <input type="radio" value="cash" name="payment">
+                                <span>Online Payment</span>
+                            </div>
+                            <div>
+                                <input type="radio" value="cash" name="payment">
+                                <span>EMI Payment</span>
+                            </div>
+                            <div>
+                                <input type="radio" value="cash" name="payment">
+                                <span>Payment on Delivery</span>
+                            </div> --}}
+                            <div id="paypal-button-container"></div>
+                        </div>
                     </div>
                     <div class="mt-4">
                         <button
@@ -119,3 +137,147 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="https://www.paypal.com/sdk/js?client-id=AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X&currency=USD"></script>
+    <script>
+        window.paypal
+        .Buttons({
+            onClick()  {
+
+                // Show a validation error if the checkbox is not checked
+                if (!document.getElementById('fullname').value
+                    || !document.getElementById('email').value
+                    || !document.getElementById('phone').value
+                    || !document.getElementById('address').value
+                    || !document.getElementById('city').value
+                    || !document.getElementById('pincode').value
+                    
+                ) {
+                    @this.dispatch('validationForAll');
+                    return false;
+                } else {
+                    @this.set('fullname', document.getElementById('fullname').value);
+                    @this.set('email', document.getElementById('email').value);
+                    @this.set('phone', document.getElementById('phone').value);
+                    @this.set('city', document.getElementById('city').value);
+                    @this.set('pincode', document.getElementById('pincode').value);
+                }
+            },
+            async createOrder() {
+            try {
+                const accessToken = "AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X";
+                let orderData = await fetch ("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+                    method: "POST",
+                    headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${accessToken}`,
+                    }
+                    body: JSON.stringify({
+                    "purchase_units": [
+                        {
+                        "amount": {
+                            "currency_code": "USD",
+                            "value": "1.00"
+                        },
+                        "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b"
+                        }
+                    ],
+                    "intent": "CAPTURE",
+                    "payment_source": {
+                        "paypal": {
+                        "experience_context": {
+                            "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+                            "payment_method_selected": "PAYPAL",
+                            "brand_name": "EXAMPLE INC",
+                            "locale": "en-US",
+                            "landing_page": "LOGIN",
+                            "shipping_preference": "SET_PROVIDED_ADDRESS",
+                            "user_action": "PAY_NOW",
+                            "return_url": "https://example.com/returnUrl",
+                            "cancel_url": "https://example.com/cancelUrl"
+                        }
+                        }
+                    }
+                    })
+                })
+                .then((response) => response.json());
+                
+                const orderData = await response.json();
+
+                console.log('order data here', orderData);
+                
+                if (orderData.id) {
+                return orderData.id;
+                } else {
+                const errorDetail = orderData?.details?.[0];
+                const errorMessage = errorDetail
+                    ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
+                    : JSON.stringify(orderData);
+                
+                throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error(error);
+                resultMessage(`Could not initiate PayPal Checkout...<br><br>${error}`);
+            }
+            },
+            async onApprove(data, actions) {
+            try {
+                const response = await fetch(`/api/orders/${data.orderID}/capture`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                });
+                
+                const orderData = await response.json();
+                // Three cases to handle:
+                //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                //   (2) Other non-recoverable errors -> Show a failure message
+                //   (3) Successful transaction -> Show confirmation or thank you message
+                
+                const errorDetail = orderData?.details?.[0];
+                
+                if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
+                // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                // recoverable state, per https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
+                return actions.restart();
+                } else if (errorDetail) {
+                // (2) Other non-recoverable errors -> Show a failure message
+                throw new Error(`${errorDetail.description} (${orderData.debug_id})`);
+                } else if (!orderData.purchase_units) {
+                throw new Error(JSON.stringify(orderData));
+                } else {
+                // (3) Successful transaction -> Show confirmation or thank you message
+                // Or go to another URL:  actions.redirect('thank_you.html');
+                const transaction =
+                    orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
+                    orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+                resultMessage(
+                    `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
+                );
+                console.log(
+                    "Capture result",
+                    orderData,
+                    JSON.stringify(orderData, null, 2),
+                );
+                }
+            } catch (error) {
+                console.error(error);
+                resultMessage(
+                `Sorry, your transaction could not be processed...<br><br>${error}`,
+                );
+            }
+            },
+        })
+        .render("#paypal-button-container");
+        
+        // Example function to show a result to the user. Your site's UI library can be used instead.
+        function resultMessage(message) {
+        const container = document.querySelector("#result-message");
+        container.innerHTML = message;
+        }
+    </script>
+
+@endpush

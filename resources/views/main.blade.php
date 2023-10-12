@@ -20,5 +20,7 @@
     {{View::make('frontend.navbar.index')}}
     @yield('content')
     {{View::make('footer')}}
+
+    @stack('scripts')
 </body>
 </html>

@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Session;
 use Illuminate\Support\Str;
@@ -15,7 +16,7 @@ class CheckoutShow extends Component
 {
     public $carts, $totalProductAmount;
 
-    public $fullname, $email, $phone, $pincode, $address, $payment_method = NULL, $payment_id = NULL;
+    public $fullname, $email, $phone, $pincode, $address, $city, $payment_method = NULL, $payment_id = NULL;
 
     public function rules() {
         return [
@@ -23,8 +24,14 @@ class CheckoutShow extends Component
             'email' => 'required|email|max:121',
             'phone' => 'required|string|max:11|min:10',
             'pincode' => 'required|string|max:5|min:5',
-            'address' => 'required|string|max:500'
+            'address' => 'required|string|max:500',
+            'city'=> 'required|string'
         ];
+    }
+
+    #[On('validationForAll')] 
+    public function validationForAll() {
+        $this->validate();
     }
 
     public function placeOrder() {
