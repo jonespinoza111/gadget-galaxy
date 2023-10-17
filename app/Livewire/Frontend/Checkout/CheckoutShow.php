@@ -34,6 +34,27 @@ class CheckoutShow extends Component
         $this->validate();
     }
 
+    #[On('transactionEmit')] 
+    public function paidOnlineOrder($value) {
+        $this->payment_id = $value;
+        $this->payment_method = 'Paid By Paypal';
+
+        $process = $this->placeOrder();
+        if ($process) {
+            Cart::where('user_id', Session::get('user')['id'])->delete();
+            try {
+                $order = Order::findOrFail($process->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            } catch(\Exception $e) {
+
+            }
+            session()->flash('message', 'Order Placed Successfully');
+            return redirect()->to('thank-you');
+        } else {
+            session()->flash('message', 'Something Went Wrong!');
+        }
+    }
+
     public function placeOrder() {
         $this->validate();
         $order = Order::create([
@@ -91,6 +112,7 @@ class CheckoutShow extends Component
     }
 
     public function totalProductAmount() {
+        $this->totalProductAmount = 0;
         $this->carts = Cart::where('user_id', Session::get('user')['id'])->get();
         foreach ($this->carts as $cartItem) {
             $this->totalProductAmount += $cartItem->product->selling_price * $cartItem->quantity; 

@@ -12,7 +12,7 @@
                 @if ($product->productImages)
                     <div class="gallery-container flex flex-col gap-y-6 w-full">
                         <div class="main-image w-full h-[25em] flex justify-center">
-                            <img src="{{ asset($currentImage ? $currentImage : $product->productImages[0]->image) }}" class="max-w-[20em] h-full rounded-lg" alt="">
+                            <img src="{{ asset($currentImage ? $currentImage : $product->productImages[0]->image) }}" class="max-w-[30em] h-full rounded-lg" alt="">
                         </div>
                         <div class="flex flex-row overflow-x-auto w-full gap-2 h-[8em] pb-4">
                             @foreach ($product->productImages as $productImage)    

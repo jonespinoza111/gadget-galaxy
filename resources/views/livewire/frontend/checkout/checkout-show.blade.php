@@ -68,7 +68,7 @@
                     <div class="form-group my-5" wire:ignore>
                         <label class="font-bold">Payment Method</label>
                         <div class="flex flex-col my-3">
-                            {{-- <div>
+                            <!-- <div>
                                 <input type="radio" value="cash" name="payment">
                                 <span>Online Payment</span>
                             </div>
@@ -79,7 +79,8 @@
                             <div>
                                 <input type="radio" value="cash" name="payment">
                                 <span>Payment on Delivery</span>
-                            </div> --}}
+                            </div> -->
+                            <div id="result-message" class="text-red-600"></div>
                             <div id="paypal-button-container"></div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
                                 <div class="flex space-x-4">
                                     <div>
                                         @if ($cartItem->product->productImages)
-                                            <img class="w-[200px] h-[135px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
+                                            <img class="w-[240px] h-[135px]" src="{{ $cartItem->product->productImages[0]->image }}" alt="{{$cartItem->product->name}}" />
                                         @else
                                             <img class="w-[200px] h-[135px]" src="" alt="{{$cartItem->product->name}}" />    
                                         @endif
@@ -111,12 +112,12 @@
                                     <div>
                                         <h2 class="text-xl font-bold">{{$cartItem->product->name}}</h2>
                                         <p class="text-sm">{{$cartItem->product->small_description}}</p>
-                                        <span class="text-red-600">Price</span> {{$cartItem->product->selling_price}}
+                                        <span class="text-red-600">Price</span> ${{$cartItem->product->selling_price}}
                                     </div>
                                 </div>
                                 @endif
                             @empty
-                            <div><h3>hello</h3></div>
+                            <div><h3>There are no items in the cart.</h3></div>
                             @endforelse
                         </div>
                     </div>
@@ -138,14 +139,15 @@
     </div>
 </div>
 
-@push('scripts')
-    <script src="https://www.paypal.com/sdk/js?client-id=AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X&currency=USD"></script>
-    <script>
-        window.paypal
-        .Buttons({
-            onClick()  {
 
-                // Show a validation error if the checkbox is not checked
+
+@push('scripts')
+    <script src="https://www.paypal.com/sdk/js?client-id=AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X&currency=USD&components=buttons"></script>
+    
+    <script>
+      window.paypal
+        .Buttons({
+            async createOrder() {
                 if (!document.getElementById('fullname').value
                     || !document.getElementById('email').value
                     || !document.getElementById('phone').value
@@ -155,6 +157,9 @@
                     
                 ) {
                     @this.dispatch('validationForAll');
+                    resultMessage(
+                    `Fill in all fields first.`,
+                    );
                     return false;
                 } else {
                     @this.set('fullname', document.getElementById('fullname').value);
@@ -163,49 +168,27 @@
                     @this.set('city', document.getElementById('city').value);
                     @this.set('pincode', document.getElementById('pincode').value);
                 }
-            },
-            async createOrder() {
+
             try {
-                const accessToken = "AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X";
-                let orderData = await fetch ("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
-                    method: "POST",
-                    headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${accessToken}`,
-                    }
-                    body: JSON.stringify({
-                    "purchase_units": [
-                        {
-                        "amount": {
-                            "currency_code": "USD",
-                            "value": "1.00"
-                        },
-                        "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b"
-                        }
+                const response = await fetch("http://localhost:8888/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // use the "body" param to optionally pass additional order information
+                // like product ids and quantities
+                body: JSON.stringify({
+                    cart: [
+                    {
+                        id: 12345,
+                        quantity: 1,
+                    },
                     ],
-                    "intent": "CAPTURE",
-                    "payment_source": {
-                        "paypal": {
-                        "experience_context": {
-                            "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
-                            "payment_method_selected": "PAYPAL",
-                            "brand_name": "EXAMPLE INC",
-                            "locale": "en-US",
-                            "landing_page": "LOGIN",
-                            "shipping_preference": "SET_PROVIDED_ADDRESS",
-                            "user_action": "PAY_NOW",
-                            "return_url": "https://example.com/returnUrl",
-                            "cancel_url": "https://example.com/cancelUrl"
-                        }
-                        }
-                    }
-                    })
-                })
-                .then((response) => response.json());
+                    total: "{{$this->totalProductAmount + 10}}"
+                }),
+                });
                 
                 const orderData = await response.json();
-
-                console.log('order data here', orderData);
                 
                 if (orderData.id) {
                 return orderData.id;
@@ -224,7 +207,7 @@
             },
             async onApprove(data, actions) {
             try {
-                const response = await fetch(`/api/orders/${data.orderID}/capture`, {
+                const response = await fetch(`http://localhost:8888/api/orders/${data.orderID}/capture`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -254,6 +237,10 @@
                 const transaction =
                     orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
                     orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+
+                if (transaction.status == "COMPLETED") {
+                    @this.dispatch('transactionEmit', { value: transaction.id });
+                }
                 resultMessage(
                     `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
                 );
@@ -279,5 +266,4 @@
         container.innerHTML = message;
         }
     </script>
-
 @endpush

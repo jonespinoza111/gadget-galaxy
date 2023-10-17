@@ -139,6 +139,7 @@
         <li><a class="hover:text-gray-200" href="{{ url('/collections') }}">All Categories</a></li>
         <li><a class="hover:text-gray-200" href="{{ url('/new-arrivals') }}">New Arrivals</a></li>
         <li><a class="hover:text-gray-200" href="{{ url('/featured-products') }}">Featured Products</a></li>
+        <li><a class="hover:text-gray-200" href="{{ url('/trending-products') }}">Trending Products</a></li>
     </ul> 
 </div>
 </nav>

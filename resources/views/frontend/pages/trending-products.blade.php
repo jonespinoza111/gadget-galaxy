@@ -1,14 +1,14 @@
 @extends('main')
-@section('title','Search Results')
+@section('title','Featured Products')
 @section("content")
     <div>
-        <div class="container">
+        <div class="w-screen pb-10">
             <div>
                 <div class="flex flex-col">
-                        <div class="px-10 py-5"><h3 class="font-semibold">Search Results</h3></div>
-                        <div class="flex flex-row flex-wrap gap-4 px-10 py-5">
-                            @forelse ($searchProducts as $product)    
-                            <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="px-10 py-5"><h3 class="font-semibold">Trending Products</h3></div>
+                        <div class="flex flex-col md:flex-row flex-wrap gap-4 px-10 py-5">
+                            @forelse ($trendingProducts as $product)    
+                                <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                     <a href="{{ url('/collections/'.$product->category->slug).'/'.$product->slug }}" class="w-[100%]">
                                         @if ($product->productImages->count() > 0)
                                             <img class="p-8 rounded-t-lg object-fill h-[60%] w-full" src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}" />
@@ -29,12 +29,12 @@
                                 </div>
                             @empty         
                                 <div>
-                                    <div>No Products Found</div>
+                                    <div>No Featured Products Available</div>
                                 </div>
                             @endforelse
                         </div>
                         <div class="px-10 py-5">
-                            {{ $searchProducts->appends(request()->input())->links() }}
+                            <a href="{{ url('collections') }}" class="bg-blue-200 w-[200px] px-4 py-2">View More</a>
                         </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 <div class="container py-[2em] px-[2em] md:[4em] xl:px-[10em] flex flex-col md:flex-row m-0 w-screen bg-[#EFF2F6]">
     <div class="left-side w-[100%] md:w-[60%] md:mx-4 my-4 md:my-0  flex flex-col items-center bg-[#EFF2F6]">
         <div class="image-container w-[100%] flex justify-center items-center">
-            {{-- <img src={{$product['gallery']}} class="w-[30em] h-[25em]" /> --}}
+            <img src={{$product['gallery']}} class="w-[30em] h-[25em]" />
             @include('carousel')
         </div>
         {{-- <div class="image-slider flex justify-center items-center w-[100%] h-[10em] bg-white">Images</div> --}}

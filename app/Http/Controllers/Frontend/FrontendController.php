@@ -62,6 +62,11 @@ class FrontendController extends Controller
         return view('frontend.pages.featured-products', compact('featuredProducts'));
     }
 
+    public function trendingProducts() {
+        $trendingProducts = ShopProduct::where('trending', '1')->latest()->get();
+        return view('frontend.pages.trending-products', compact('trendingProducts'));
+    }
+
 
     public function searchProducts(Request $request) {
         if ($request->search) {
