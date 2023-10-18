@@ -13,7 +13,7 @@
     <meta name="author" content="JE">
     
     @vite(['resources/css/app.css','resources/js/app.js'])
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body class="w-[100%]">

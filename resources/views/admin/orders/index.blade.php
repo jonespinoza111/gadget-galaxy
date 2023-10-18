@@ -12,7 +12,7 @@
                         <input type="date" name="date" value="{{ Request::get('date') ?? date('Y-m-d') }}" />
                     </div>
                     <div class="flex flex-row items-center">
-                        <label class="mr-2">Filter by Date</label>
+                        <label class="mr-2">Filter by Status</label>
                         <select name="status" class="w-[200px] py-2 px-4">
                             <option value="">Select Status</option>
                             <option value="in-progress" {{ Request::get('status') == 'in-progress' ? 'selected' : ''}}>In Progress</option>

@@ -41,10 +41,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="flex flex-col md:flex-row gap-y-2">
-                                            <a href="{{ url('admin/users/'.$user->id.'/edit') }}" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400 hover:bg-blue-500">Edit</a>
+                                        <div class="flex flex-col md:flex-row gap-y-2 gap-x-2">
+                                            <a href="{{ url('admin/users/'.$user->id.'/edit') }}" class="w-[100px] md:w-[150px] px-5 py-2 bg-blue-400 hover:bg-blue-500 text-center">Edit</a>
                                             <a href="{{ url('admin/users/'.$user->id.'/delete') }}" onclick="return confirm('Are you sure you want to delete this user?')"
-                                             class="w-[100px] md:w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500">Delete</a>
+                                             class="w-[100px] md:w-[150px] px-5 py-2 bg-red-400 hover:bg-red-500 text-center">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
