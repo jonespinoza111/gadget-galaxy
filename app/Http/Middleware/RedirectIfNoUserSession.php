@@ -5,9 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class AdminMiddleware
+class RedirectIfNoUserSession
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->get('user') || !$request->session()->get('user')['role_as'] == "1") {
-            return redirect('/')->with('status','Access Denied. Only Admins are allowed.');
+        if (!Session::has('user')) {
+            return redirect('/login');
         }
         return $next($request);
     }

@@ -41,19 +41,6 @@ Route::get('/logout', function () {
 Route::view('/register','register');
 Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
-// Route::get('/',[ProductController::class,'index']);
-Route::get('/wishlist', [WishlistController::class,'index']);
-Route::get('/cart', [CartController::class,'index']);
-Route::get('/checkout', [CheckoutController::class,'index']);
-Route::get('/thank-you', [FrontendController::class,'thankyou']);
-
-Route::get('/orders', [OrderController::class,'index']);
-Route::get('/orders/{orderId}', [OrderController::class,'show']);
-
-Route::get('profile', [UserController::class, 'index']);
-Route::post('profile', [UserController::class, 'updateUserDetails']);
-Route::get('change-password', [UserController::class, 'passwordCreate']);
-Route::post('change-password', [UserController::class, 'changePassword']);
 
 
 Route::get('detail/{id}',[ProductController::class,'detail']);
@@ -77,7 +64,22 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('search', 'searchProducts');
 });
 
-Route::prefix('/admin')->middleware(['isAdmin'])->group(function () {
+Route::middleware('redirectIfNoUserSession')->group(function () {
+    Route::get('/wishlist', [WishlistController::class,'index']);
+    Route::get('/cart', [CartController::class,'index']);
+    Route::get('/checkout', [CheckoutController::class,'index']);
+    Route::get('/thank-you', [FrontendController::class,'thankyou']);
+
+    Route::get('/orders', [OrderController::class,'index']);
+    Route::get('/orders/{orderId}', [OrderController::class,'show']);
+
+    Route::get('profile', [UserController::class, 'index']);
+    Route::post('profile', [UserController::class, 'updateUserDetails']);
+    Route::get('change-password', [UserController::class, 'passwordCreate']);
+    Route::post('change-password', [UserController::class, 'changePassword']);
+});
+
+Route::prefix('/admin')->middleware(['redirectIfNoUserSession', 'isAdmin'])->group(function () {
     Route::get('/',[DashboardController::class,'index']);
 
     Route::controller(CategoryController::class)->group(function () {

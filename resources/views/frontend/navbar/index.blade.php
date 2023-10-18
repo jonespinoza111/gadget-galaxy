@@ -112,24 +112,35 @@
     
     <div class="hidden w-full" id="navbar-hamburger">
         <ul class="flex flex-col font-medium mt-4 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <li>
-            <a href="/admin" class="block py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" aria-current="page">Dashboard</a>
-        </li>
-        <li>
-            <a href="/profile" class="block py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" aria-current="page">Profile</a>
-        </li>
-        <li>
-            <a href="/cart" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Cart</a>
-        </li>
-        <li>
-            <a href="/orders" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">My Orders</a>
-        </li>
-        <li>
-            <a href="/wishlist" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Wishlist</a>
-        </li>
-        <li>
-            <a href="/logout" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Logout</a>
-        </li>
+        @if(Session::has('user'))
+            @if(Session::get('user')['role_as'] == "1")
+                <li>
+                    <a href="/admin" class="block py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" aria-current="page">Dashboard</a>
+                </li>
+            @endif
+            <li>
+                <a href="/profile" class="block py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" aria-current="page">Profile</a>
+            </li>
+            <li>
+                <a href="/cart" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Cart</a>
+            </li>
+            <li>
+                <a href="/orders" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">My Orders</a>
+            </li>
+            <li>
+                <a href="/wishlist" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Wishlist</a>
+            </li>
+            <li>
+                <a href="/logout" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Logout</a>
+            </li>
+            @else
+                <li>
+                    <a href="/login" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Login</a>
+                </li>
+                <li>
+                    <a href="/register" class="block py-2 pl-3 pr-4 text-gray-900  hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Register</a>
+                </li>
+            @endif
         </ul>
     </div>
 

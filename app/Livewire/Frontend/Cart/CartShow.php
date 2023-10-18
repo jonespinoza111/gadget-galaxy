@@ -69,7 +69,6 @@ class CartShow extends Component
     }
     public function render()
     {
-
         $this->cart = Cart::where('user_id', Session::get('user')->id)->get();
 
         return view('livewire.frontend.cart.cart-show', [
