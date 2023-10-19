@@ -12,7 +12,9 @@
     <meta name="description" content="@yield('meta_description')">
     <meta name="author" content="JE">
     
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css','resources/js/app.js']) -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-35f4a062.css') }}">
+    <script src="{{ asset('build/assets/app-73316d6f.js') }}"></script> 
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
