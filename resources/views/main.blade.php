@@ -12,7 +12,7 @@
     <meta name="description" content="@yield('meta_description')">
     <meta name="author" content="JE">
     
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/app.js', 'public/build/assets'])
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body class="w-[100%]">
