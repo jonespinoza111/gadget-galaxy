@@ -12,6 +12,10 @@
         { 
             "src": "/(css|js)/(.*)$",
             "dest": "/api/assets.php?type=$1&file=$2"
+        },
+        { 
+            "src": "/build/(.*)", 
+            "dest": "/public/build/" 
         }
     ],
     "env": {
