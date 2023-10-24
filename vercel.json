@@ -11,6 +11,10 @@
             "dest": "public/$1/$2"
         },
         {
+            "src": "/uploads/(.*)",
+            "dest": "/public/uploads/"
+        },
+        {
             "src": "/build/(.*)",
             "dest": "/public/build/"
         },
