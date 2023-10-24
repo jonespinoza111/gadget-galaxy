@@ -13,8 +13,8 @@
     <meta name="author" content="JE">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="{{asset('resources/css/app.css')}}"></script>
-    <script src="{{asset('resources/js/app.js')}}"></script>
+    <script src="resources/css/app.css"></script>
+    <script src="resources/js/app.js"></script>
 </head>
 <body class="w-[100%]">
     {{View::make('frontend.navbar.index')}}
