@@ -10,7 +10,7 @@
             @foreach ($sliders as $key => $slider)
                 <div class="hidden duration-700 ease-in-out relative" data-carousel-item>
                     @if ($slider->image)
-                        <img src="{{ asset("../../$slider->image") }}" class="absolute w-full object-fill h-56 md:h-96" alt="...">
+                        <img src="../../$slider->image" class="absolute w-full object-fill h-56 md:h-96" alt="...">
                     @endif
                 </div>
             @endforeach
