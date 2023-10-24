@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     build: {
-        assetsInlineLimit: 0,
+        outDir: '../dist',
     },
     plugins: [
         laravel({
