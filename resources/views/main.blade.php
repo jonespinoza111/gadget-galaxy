@@ -14,6 +14,13 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        {!! Vite::content('resources/css/app.css') !!}
+    </style>
+    <script>
+        {!! Vite::content('resources/js/app.js') !!}
+    </script>
 </head>
 <body class="w-[100%]">
     {{View::make('frontend.navbar.index')}}
