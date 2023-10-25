@@ -19,8 +19,7 @@
                   </div>
   
                   <form action="login" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
+                    @csrf
                     <p class="mb-4">Please login to your account</p>
                     <!--Username input-->
                     <div class="relative mb-4" data-te-input-wrapper-init>
