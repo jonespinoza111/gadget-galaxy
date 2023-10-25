@@ -13,6 +13,5 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'https://gadget-galaxy-tau.vercel.app/login'
     ];
 }
