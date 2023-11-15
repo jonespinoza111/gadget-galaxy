@@ -142,9 +142,11 @@
 
 
 @push('scripts')
-    <script src="https://www.paypal.com/sdk/js?client-id=AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X&currency=USD&components=buttons"></script>
-    
-    <script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AaVLrE8lOQkmhcJbgXsNinoviCGQXR-66HG2ypbZzhrEri5WwyvZ9Fw51CfHpNiWOEUAaXVo9joRSZ0X&currency=USD&components=buttons"></script>
+
+<script>
+    let paypalServer = @json(env('PAYPAL_PROCESSING_SERVER'));
       window.paypal
         .Buttons({
             async createOrder() {
@@ -170,7 +172,7 @@
                 }
 
             try {
-                const response = await fetch("http://localhost:8888/api/orders", {
+                const response = await fetch(`${paypalServer}/api/orders`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -207,7 +209,7 @@
             },
             async onApprove(data, actions) {
             try {
-                const response = await fetch(`http://localhost:8888/api/orders/${data.orderID}/capture`, {
+                const response = await fetch(`${paypalServer}/api/orders/${data.orderID}/capture`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
