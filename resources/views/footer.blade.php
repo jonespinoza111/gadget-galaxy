@@ -6,7 +6,9 @@
         <div class="flex flex-col w-[90%] md:w-[25%]">
             <h1 class="uppercase text-[16px] font-semibold underline underline-offset-8">{{$appSettings->website_name}}</h1>
             <div class="mt-3">
-                <p class="w-[80%]">This is a short paragraph about how this website is not fully constructed yet. I need to make more pages and fill out all the information.</p>
+                <p class="w-[80%]">
+                    Gadget Galaxy is a comprehensive online platform offering a wide range of cutting-edge gadgets and electronics, catering to tech enthusiasts and casual consumers alike. Gadget Galaxy provides a seamless shopping experience for anyone seeking the latest in technological innovation.
+                </p>
             </div>
         </div>
         <div class="flex flex-col w-[90%] md:w-[25%]">
@@ -41,5 +43,8 @@
                 <h3>{{$appSettings->email1 ?? 'email1'}}</h3>
             </div>
         </div>
+    </div>
+    <div class="flex flex-row justify-center items-center">
+        <a target="_blank" href="https://icons8.com/icon/LiExshsLiiRn/smartphones">Gadget</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
     </div>
 </footer>
