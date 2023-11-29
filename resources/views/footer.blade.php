@@ -7,7 +7,7 @@
             <h1 class="uppercase text-[16px] font-semibold underline underline-offset-8">{{$appSettings->website_name}}</h1>
             <div class="mt-3">
                 <p class="w-[80%]">
-                    Gadget Galaxy is a comprehensive online platform offering a wide range of cutting-edge gadgets and electronics, catering to tech enthusiasts and casual consumers alike.
+                    Gadget Galaxy is a comprehensive online platform offering a wide range of cutting-edge gadgets and electronics, catering to tech enthusiasts and casual consumers.
                 </p>
             </div>
         </div>
