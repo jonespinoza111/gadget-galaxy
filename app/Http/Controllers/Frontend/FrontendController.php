@@ -53,7 +53,7 @@ class FrontendController extends Controller
     }
 
     public function newArrival() {
-        $newArrivalProducts = ShopProduct::latest()->take(3)->get();
+        $newArrivalProducts = ShopProduct::latest()->take(10)->get();
         return view('frontend.pages.new-arrival', compact('newArrivalProducts'));
     }
 
