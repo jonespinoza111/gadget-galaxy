@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-gadget-16.png">
+    <link rel="icon" type="image/png" href="{{ asset('icons8-gadget-bubbles-16.png') }}">
     <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 
     <title>@yield('title')</title>
@@ -18,7 +18,7 @@
 
     
 </head>
-<body class="w-[100%]">
+<body class="w-full">
     {{View::make('frontend.navbar.index')}}
     @yield('content')
     {{View::make('footer')}}

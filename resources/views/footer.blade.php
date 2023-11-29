@@ -1,4 +1,4 @@
-<footer class="flex justify-between bg-gray-900 text-white w-screen">
+<footer class="flex flex-col justify-between bg-gray-900 text-white w-full">
     @if(session('status'))
         <h3>{{session('status')}}</h3>
     @endif
@@ -7,7 +7,7 @@
             <h1 class="uppercase text-[16px] font-semibold underline underline-offset-8">{{$appSettings->website_name}}</h1>
             <div class="mt-3">
                 <p class="w-[80%]">
-                    Gadget Galaxy is a comprehensive online platform offering a wide range of cutting-edge gadgets and electronics, catering to tech enthusiasts and casual consumers alike. Gadget Galaxy provides a seamless shopping experience for anyone seeking the latest in technological innovation.
+                    Gadget Galaxy is a comprehensive online platform offering a wide range of cutting-edge gadgets and electronics, catering to tech enthusiasts and casual consumers alike.
                 </p>
             </div>
         </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-row justify-center items-center">
+    <div class="flex flex-row justify-center items-center my-10">
         <a target="_blank" href="https://icons8.com/icon/LiExshsLiiRn/smartphones">Gadget</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
     </div>
 </footer>

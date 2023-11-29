@@ -6,7 +6,7 @@
     }
 ?>
 <!-- navbar -->
-<nav class="flex flex-col bg-gray-900 text-white w-screen">
+<nav class="flex flex-col bg-gray-900 text-white w-full">
 <div class="px-5 xl:px-12 py-6 flex w-full items-center justify-between">
     <a class="text-3xl font-bold font-heading" href="/">
     <!-- <img class="h-9" src="logo.png" alt="logo"> -->
