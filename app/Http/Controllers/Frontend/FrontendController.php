@@ -58,12 +58,12 @@ class FrontendController extends Controller
     }
 
     public function featuredProducts() {
-        $featuredProducts = ShopProduct::where('featured', '1')->latest()->get();
+        $featuredProducts = ShopProduct::where('featured', '1')->inRandomOrder()->get();
         return view('frontend.pages.featured-products', compact('featuredProducts'));
     }
 
     public function trendingProducts() {
-        $trendingProducts = ShopProduct::where('trending', '1')->latest()->get();
+        $trendingProducts = ShopProduct::where('trending', '1')->inRandomOrder()->get();
         return view('frontend.pages.trending-products', compact('trendingProducts'));
     }
 
