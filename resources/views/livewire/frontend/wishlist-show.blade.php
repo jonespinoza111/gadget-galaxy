@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col py-4 px-3 md:py-5 md:px-8 justify-center">
+<div class="w-full min-h-[30em] md:min-h-[40em] flex flex-col py-4 px-3 md:py-5 md:px-8 justify-start">
     <div class="w-screen">
         @if (session()->has('message'))
             <div class="px-5 py-3 bg-green-200 w-full">

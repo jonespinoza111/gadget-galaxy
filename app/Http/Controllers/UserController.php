@@ -13,26 +13,41 @@ class UserController extends Controller
 {
     //
     public function login(Request $req) {
-        $user = User::where(['email'=>$req->email])->first();
 
-        if (!$user || !Hash::check($req->password,$user->password)) {
-            return $user;
-        } else {
-            $userdata = array(
-                'email' => $req->email ,
-                'password' => $req->password ,
-            );
-            $req->session()->put('user',$user);
-            // if (Auth::attempt($userdata)) {
-                if ($user->role_as == "1") {
-                    return redirect('/admin')->with('status', 'Welcome to the Dashboard');
-                } else {
-                    return redirect('/')->with('status', 'Logged in successfully');
-                }
-            // } else {
-                // return redirect('/login')->with('status', 'Could not login');
-            // }
+        if ($req->input('action') === 'regular') {
+            // Handle regular user login
 
+            $user = User::where(['email'=>$req->email])->first();
+
+            if (!$user || !Hash::check($req->password,$user->password)) {
+                return $user;
+            } else {
+                $userdata = array(
+                    'email' => $req->email ,
+                    'password' => $req->password ,
+                );
+                $req->session()->put('user',$user);
+                    if ($user->role_as == "1") {
+                        return redirect('/admin')->with('status', 'Welcome to the Dashboard');
+                    } else {
+                        return redirect('/')->with('status', 'Logged in successfully');
+                    }
+            }
+        } elseif ($req->input('action') === 'test') {
+            // Handle test login
+            $testUser = User::where(['email'=>"colepole@gmail.com"])->first();
+
+            if (!$testUser) {
+                return $testUser;
+            } else {
+                $req->session()->put('user',$testUser);
+                    if ($testUser->role_as == "1") {
+                        return redirect('/admin')->with('status', 'Welcome to the Dashboard');
+                    } else {
+                        return redirect('/')->with('status', 'Logged in successfully');
+                    }
+            }
+            
         }
     }
     public function register(Request $req) {
