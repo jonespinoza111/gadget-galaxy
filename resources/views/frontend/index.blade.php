@@ -47,7 +47,7 @@
             <h3 class="font-semibold">Trending Products</h3>
             <a href="{{ url('trending-products') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
         </div>
-        <div class="flex flex-row overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
+        <div class="scroll-styles flex flex-row overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
                 @if ($trendingProducts)
                         @foreach ($trendingProducts as $product)    
                             <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -84,7 +84,7 @@
             <h3 class="font-semibold">New Arrivals</h3>
             <a href="{{ url('new-arrivals') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
         </div>
-        <div class="flex flex-row justify-start overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
+        <div class="scroll-styles flex flex-row justify-start overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
                 @if ($newArrivalProducts)
                         @foreach ($newArrivalProducts as $product)    
                             <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -121,7 +121,7 @@
             <h3 class="font-semibold">Featured Products</h3>
             <a href="{{ url('featured-products') }}" class="ml-2 w-[150px] px-4 py-2 bg-black text-white text-center">View More</a>
         </div>
-        <div class="flex flex-row justify-start overflow-x-auto gap-x-10 sm:w-[80&] px-2 pb-5">
+        <div class="scroll-styles flex flex-row justify-start overflow-x-scroll gap-x-10 sm:w-[80&] px-2 pb-5">
                 @if ($featuredProducts)
                         @foreach ($featuredProducts as $product)    
                             <div class="min-w-[16em] max-w-[16em] relative h-[390px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
