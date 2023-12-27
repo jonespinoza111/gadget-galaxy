@@ -53,7 +53,7 @@ Route::get('myorders',[ProductController::class,'myOrders']);
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/home', 'index');
+    Route::get('/home', 'index')->name('home');;
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
